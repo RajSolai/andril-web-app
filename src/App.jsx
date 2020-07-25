@@ -1,0 +1,96 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import "./theme/App.scss";
+import AddArticle from "./screens/addarticle";
+import Home from "./screens/home";
+import Login from "./screens/login";
+import Register from "./screens/register";
+import { MdArrowBack } from "react-icons/md";
+import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      uid: null,
+    };
+  }
+  componentDidMount() {
+    this.setState({ uid: localStorage.getItem("uid") });
+  }
+  render() {
+    if (this.state.uid != null) {
+      return (
+        <Router>
+          <div className="nav-bar">
+            <ul className="nav-list">
+              <li className="nav-item back-btn">
+                <Link to="/" className="link">
+                  <MdArrowBack />
+                </Link>
+              </li>
+              <li className="nav-itemp">
+                <Link to="/" className="link">
+                  <p class="brand">
+                    Andril<em>360</em>
+                  </p>
+                </Link>
+              </li>
+              <li className="nav-linkcoll">
+                <ul className="nav-list2">
+                  <Link to="/addarticle" className="link">
+                    <li className="nav-item">
+                      <span className="nav-link" style={{ color: "#96bb7c" }}>
+                        <FaPen /> Write Article
+                      </span>
+                    </li>
+                  </Link>
+                  <Link to="/usr" className="link">
+                    <li className="nav-item">
+                      <span className="nav-link">
+                        <FaUserAlt /> My Account
+                      </span>
+                    </li>
+                  </Link>
+                  <Link to="/posts" className="link">
+                    <li className="nav-item">
+                      <span className="nav-link">
+                        <FaNewspaper /> Articles
+                      </span>
+                    </li>
+                  </Link>
+                  <Link to="/about" className="link">
+                    <li className="nav-item">
+                      <span className="nav-link">
+                        <FaInfoCircle /> About
+                      </span>
+                    </li>
+                  </Link>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <Switch>
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/addarticle" exact component={AddArticle}></Route>
+            </Switch>
+          </div>
+        </Router>
+      );
+    } else {
+      return (
+        <Router>
+          <div>
+            <Switch>
+              <Route path="/" exact component={Login}></Route>
+              <Route path="/register" exact component={Register}></Route>
+            </Switch>
+          </div>
+        </Router>
+      );
+    }
+  }
+}
+
+export default App;
