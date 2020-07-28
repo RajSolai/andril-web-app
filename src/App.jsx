@@ -4,8 +4,8 @@ import "./theme/App.scss";
 import AddArticle from "./screens/addarticle";
 import Home from "./screens/home";
 import Login from "./screens/login";
+import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
-import { MdArrowBack } from "react-icons/md";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
 
 class App extends React.Component {
@@ -24,11 +24,6 @@ class App extends React.Component {
         <Router>
           <div className="nav-bar">
             <ul className="nav-list">
-              <li className="nav-item back-btn">
-                <Link to="/" className="link">
-                  <MdArrowBack />
-                </Link>
-              </li>
               <li className="nav-itemp">
                 <Link to="/" className="link">
                   <p class="brand">
@@ -76,6 +71,7 @@ class App extends React.Component {
               <Route path="/addarticle" exact component={AddArticle}></Route>
             </Switch>
           </div>
+          <BottomBar/>
         </Router>
       );
     } else {

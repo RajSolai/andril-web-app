@@ -32,6 +32,18 @@ class AddArticle extends Component {
       [name]: value,
     });
   }
+  changebottombarPos(){
+      document.getElementById("bottombar").style.display="none";
+  }
+  changebottombar(){
+      document.getElementById("bottombar").style.display="flex";
+  }
+  componentDidMount() {
+    this.changebottombarPos();
+  }
+  componentWillUnmount() {
+   this.changebottombar(); 
+  }
   uploadhandler() {
     this._testupload();
   }
@@ -44,7 +56,40 @@ class AddArticle extends Component {
     return (
       <div className="app">
         <div className="safearea articleform">
-          <div className="left-aa">
+          <div className="mobile-view">
+            <div className="form">
+                <h3>Add Article</h3>
+                  <select
+                    name="category"
+                    id="category"
+                    onChange={this.handleInputChange}
+                    placeholder="Select The Category"
+                  >
+                    <option value="tamil">Tamil</option>
+                    <option value="medicine">Medicine</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="business">Business</option>
+                    <option value="archaeology">Archaeology</option>
+                    <option value="environment">Environment</option>
+                    <option value="art">Art</option>
+                    <option value="imagination">Imagination</option>
+                    <option value="politics">Politics</option>
+                    <option value="tech">Technology</option>
+                    <option value="crime_stories">Crime Stories</option>
+                </select>
+                <input
+                  type="text"
+                  name="posttitle"
+                  id="posttitle"
+                  placeholder="Title of Post"
+                />
+                <textarea name="" id="" cols="30" rows="30"></textarea>
+                <input type="file"className="filepicker" onChange={this.fileChangedHandler} />
+                <button onClick={this.uploadhandler}>Post Article</button>
+            </div>
+          </div>
+        <div className="desk-view">
+        <div className="left-aa">
             <div className="left-aarea">
               <div className="form">
                 <h3>Add Article</h3>
@@ -82,6 +127,7 @@ class AddArticle extends Component {
               <textarea name="" id="" cols="100" rows="30"></textarea>
             </div>
           </div>
+        </div>    
         </div>
       </div>
     );

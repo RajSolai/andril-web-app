@@ -1,0 +1,21 @@
+//listitem.scss
+.listitem {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: #000;
+	.listbox{
+		border-radius: 8px;
+	}
+	li{
+		margin: 0;
+	}
+	list-style: none;
+    h3 {
+        padding: none;
+        margin: none;
+    }
+    p{
+    	font-size: .9rem;
+    }
+}

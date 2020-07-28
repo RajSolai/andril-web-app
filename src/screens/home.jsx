@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/card";
+import ListItem from "../components/listitem";
 import "../theme/App.scss";
 
 class Home extends Component {
@@ -7,6 +8,7 @@ class Home extends Component {
     return (
       <div className="app">
         <div className="safe-area">
+        <h3 style={{margin:"none"}}>Must Read</h3>
         {/*for testing*/}
         <div className="homecard-horizontal-view">
         <Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
@@ -15,6 +17,18 @@ class Home extends Component {
         <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
         <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
         <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+        </div>
+        <h3 style={{margin:"none"}}>Most Popular</h3>
+        <div className="list-view">
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
+        <ListItem title="ListItem1" content="Lorem ipusum"/>
         </div>
         </div>
       </div>
