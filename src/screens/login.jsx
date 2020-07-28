@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../theme/App.scss";
 // eslint-disable-next-line no-unused-vars
 import { withRouter, Link } from "react-router-dom";
-import Axios from "axios";
+//import Axios from "axios";
 import { FaHeart } from "react-icons/fa";
 
 class Login extends Component {
