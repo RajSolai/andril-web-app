@@ -29,9 +29,6 @@ class BottomBar extends Component{
 				<FaUserAlt/>
 			</button>
 			</Link>
-	
-			
-			
 			</div>
 		);
 	}
