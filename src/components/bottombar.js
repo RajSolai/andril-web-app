@@ -9,7 +9,7 @@ class BottomBar extends Component{
 	render() {
 		return (
 			<div className="bottombar" id="bottombar">
-			<Link className="link">
+			<Link className="link" to="">
 			<button className="round-btn">				
 				<FaInfoCircle/>
 			</button>	
@@ -19,12 +19,12 @@ class BottomBar extends Component{
 				<FaPen/>
 			</button>
 			</Link>
-			<Link className="link">
+			<Link className="link" to="">
 			<button className="round-btn">				
 				<FaSearch/>
 			</button>
 			</Link>
-			<Link className="link">
+			<Link className="link" to="">
 			<button className="round-btn">				
 				<FaUserAlt/>
 			</button>

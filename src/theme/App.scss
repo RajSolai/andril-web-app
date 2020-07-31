@@ -8,7 +8,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #fbf0d9;
+    background-color: #ffffff;
 }
 .app {
     margin-top: 5rem;
@@ -144,8 +144,9 @@ Link, .link {
 .right {
     height: 100vh;
     flex: 60%;
-    background-image: url("../assets/books.jpg");
-    background-size: contain;
+    background-image: url("../assets/andrillogo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     @media only screen and (max-width: 1000px) {
         display: none;
     }
@@ -177,7 +178,7 @@ Link, .link {
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: rgba(251, 240, 217, .6);
+    background-color: rgba(255, 255, 255, .6);
     text-align: center;
     width: 100%;
     color: $primary-text;
@@ -338,12 +339,12 @@ Link, .link {
     }
     .form {
         display: inline-flex;
-        flex-direction:column;
+        flex-direction: column;
         margin-bottom: 0rem;
         padding: 0rem;
-        align-content:center;
-        justify-content:center;
-        input{
+        align-content: center;
+        justify-content: center;
+        input {
             padding: 1rem;
         }
         select {
@@ -415,6 +416,25 @@ Link, .link {
     /* IE and Edge */
     scrollbar-width: none;
     /* Firefox */
+}
+.search-layout {
+    margin-top: 8rem;
+    .search-categories {
+        padding: 1rem;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
 }
 @media only screen and (max-width: 600px) {
     .nav-linkcoll {

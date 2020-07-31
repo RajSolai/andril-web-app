@@ -4,6 +4,7 @@ import "./theme/App.scss";
 import AddArticle from "./screens/addarticle";
 import Home from "./screens/home";
 import Login from "./screens/login";
+import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
@@ -26,7 +27,7 @@ class App extends React.Component {
             <ul className="nav-list">
               <li className="nav-itemp">
                 <Link to="/" className="link">
-                  <p class="brand">
+                  <p className="brand">
                     Andril<em>360</em>
                   </p>
                 </Link>
@@ -47,10 +48,10 @@ class App extends React.Component {
                       </span>
                     </li>
                   </Link>
-                  <Link to="/posts" className="link">
+                  <Link to="/search" className="link">
                     <li className="nav-item">
                       <span className="nav-link">
-                        <FaNewspaper /> Articles
+                        <FaNewspaper /> Search Articles
                       </span>
                     </li>
                   </Link>
@@ -69,6 +70,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Home}></Route>
               <Route path="/addarticle" exact component={AddArticle}></Route>
+              <Route path="/search" exact component={Search}></Route>
             </Switch>
           </div>
           <BottomBar/>

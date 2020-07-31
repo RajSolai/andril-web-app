@@ -35,14 +35,16 @@ class AddArticle extends Component {
   changebottombarPos(){
       document.getElementById("bottombar").style.display="none";
   }
-  changebottombar(){
+  changebottombarTogglevisible(){
+    if (document.documentElement.clientWidth <= 600) {
       document.getElementById("bottombar").style.display="flex";
+    }
   }
   componentDidMount() {
     this.changebottombarPos();
   }
   componentWillUnmount() {
-   this.changebottombar(); 
+   this.changebottombarTogglevisible(); 
   }
   uploadhandler() {
     this._testupload();
