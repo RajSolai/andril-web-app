@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Fade} from "react-reveal";
 
 class AddArticle extends Component {
   constructor(props) {
@@ -7,11 +8,13 @@ class AddArticle extends Component {
       coverimg: null,
       category: "Tamil",
       imgbase64: null,
+      mustread:false
     };
     this.fileChangedHandler = this.fileChangedHandler.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.uploadhandler = this.uploadhandler.bind(this);
     this._testupload = this._testupload.bind(this);
+    this.handleCheckBox = this.handleCheckBox.bind(this);
   }
   fileChangedHandler = (event) => {
     const imgs = event.target.files[0];
@@ -32,6 +35,9 @@ class AddArticle extends Component {
       [name]: value,
     });
   }
+  handleCheckBox(){
+    this.setState({mustread: !this.state.mustread});
+  }
   changebottombarPos(){
       document.getElementById("bottombar").style.display="none";
   }
@@ -43,7 +49,7 @@ class AddArticle extends Component {
   componentDidMount() {
     this.changebottombarPos();
   }
-  componentWillUnmount() {
+  componentDidUnmount() {
    this.changebottombarTogglevisible(); 
   }
   uploadhandler() {
@@ -53,9 +59,12 @@ class AddArticle extends Component {
   _testupload() {
     console.log("TOTAL IMAGES" + this.state.coverimg);
     console.log("CATEGORY" + this.state.category);
+    console.log("mustread?"+this.state.mustread);
   }
   render() {
     return (
+      <>
+      <Fade>
       <div className="app">
         <div className="safearea articleform">
           <div className="mobile-view">
@@ -85,7 +94,9 @@ class AddArticle extends Component {
                   id="posttitle"
                   placeholder="Title of Post"
                 />
-                <textarea name="" id="" cols="30" rows="30"></textarea>
+                <div className="textarea">
+                  <textarea name="" id="" cols="43" rows="30" placeholder="Type in the Article in MarkDown Format"></textarea>
+                </div>
                 <input type="file"className="filepicker" onChange={this.fileChangedHandler} />
                 <button onClick={this.uploadhandler}>Post Article</button>
             </div>
@@ -119,6 +130,12 @@ class AddArticle extends Component {
                   id="posttitle"
                   placeholder="Title of Post"
                 />
+                <div className="togglewrapper">
+                  <div className="toggle">
+                    <input type="checkbox" id="mustread" name="mustread" defaultChecked={this.state.mustread} onChange={this.handleCheckBox}/>
+                    <label>Mark as Must Read ? <span role="img" aria-label="emoji">🙄</span> </label>
+                  </div>
+                </div>
                 <input type="file"className="filepicker" onChange={this.fileChangedHandler} />
                 <button onClick={this.uploadhandler}>Post Article</button>
               </div>
@@ -126,12 +143,14 @@ class AddArticle extends Component {
           </div>
           <div className="right-aa">
             <div className="textarea">
-              <textarea name="" id="" cols="100" rows="30"></textarea>
+              <textarea name="" id="" cols="70" rows="20" placeholder="Type in the Article in MarkDown Format"></textarea>
             </div>
           </div>
         </div>    
         </div>
       </div>
+      </Fade>
+      </>
     );
   }
 }

@@ -4,17 +4,30 @@ import ListItem from "../components/listitem";
 import "../theme/App.scss";
 import styled from 'styled-components'
 import { IoIosArrowBack } from "react-icons/io"
+import { FaSearch } from "react-icons/fa"
+import {Fade} from 'react-reveal';
 
 const SearchBox = styled.input`
-    background:#ffffff;
+    background:#f5f5f5;
     display:inline-block;
-    border: solid .6px rgba(0,0,0,.6);
+    border: none;
     border-radius:8px;
     width:80vw;
     height:40px;
     padding: 0.25em 1em;
     margin:.5em;
 `
+const SearchContainer = styled.div`
+    display:flex;
+    flex-direction:row;
+    align-content:center;
+    justify-content:center;
+    background: #f5f5f5;
+    align-items: center;
+    padding-left: 1em;
+    border-radius:20px;
+`
+
 const FlexBox = styled.div`
     display:flex;
     justify-content:center;
@@ -28,10 +41,13 @@ const SearchContent = styled.div`
     align-content:center;
     text-align:center;
 `
-const iconButton = styled.a`
+const IconButton = styled.a`
+    margin:.5em;
     justify-content:center;
     text-align:center;
     font-size:1rem;
+    padding: .5em;
+    display: block;
 `
 
 class Home extends Component {
@@ -54,9 +70,7 @@ class Home extends Component {
         if (this.state.searchkey===null) {
             document.getElementById("homecontent").style.display="block";
         }
-        this.setState({
-            searchKey: event.target.value
-        });
+        this.searchRecords(event.target.value);
     }
     handleBackHome(){
         document.getElementById("searchcontent").style.display="none";
@@ -65,42 +79,58 @@ class Home extends Component {
             document.getElementById("bottombar").style.display="flex";
         }
     }
+    async searchRecords(key){
+        // search for the item based on article name
+    }
+    async getMustRead(){
+        // get must read articles
+    }
+    async getRecent(){
+        // get recent articles
+    }
   render() {
     return (
       <div className="app">
         <div className="safe-area">
-        <FlexBox>
-          <SearchBox placeholder="Search for the Article" onChange={this.handleSearch} value={this.state.searchKey}></SearchBox>          
-        </FlexBox>
+        <SearchContainer>
+        <FaSearch></FaSearch>
+        <SearchBox placeholder="Search for the Article" onChange={this.handleSearch} value={this.state.searchKey}></SearchBox>          
+        </SearchContainer>
         <SearchContent id="searchcontent">
-        <iconButton onClick={this.handleBackHome}> <IoIosArrowBack/> Get Back To Home</iconButton>
-        <Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>    
+        <IconButton onClick={this.handleBackHome}>
+         <span>
+            <IoIosArrowBack/> Get Back To Home
+        </span> 
+        l</IconButton>
+        <Fade left>
+            <Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>    
+        </Fade>
         </SearchContent>
         <div id="homecontent">
         <h3 style={{margin:"none"}}>Must Read</h3>
         {/*for testing*/}
         <div className="homecard-horizontal-view">
-        <Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-        <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
         </div>
-        <h3 style={{margin:"none"}}>Most Popular</h3>
+        <h3 style={{margin:"none"}}>Recent Articles</h3>
         <div className="list-view">
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
-        <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
+            <ListItem title="ListItem1" content="Lorem ipusum"/>
         </div>
         </div>
         </div>

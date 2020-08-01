@@ -8,6 +8,7 @@ import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
+import { Fade } from "react-reveal"
 
 class App extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class App extends React.Component {
                 <ul className="nav-list2">
                   <Link to="/addarticle" className="link">
                     <li className="nav-item">
-                      <span className="nav-link" style={{ color: "#96bb7c" }}>
+                      <span className="nav-link">
                         <FaPen /> Write Article
                       </span>
                     </li>
@@ -51,7 +52,7 @@ class App extends React.Component {
                   <Link to="/search" className="link">
                     <li className="nav-item">
                       <span className="nav-link">
-                        <FaNewspaper /> Search Articles
+                        <FaNewspaper /> Articles
                       </span>
                     </li>
                   </Link>
@@ -66,13 +67,13 @@ class App extends React.Component {
               </li>
             </ul>
           </div>
-          <div>
+          <Fade>
             <Switch>
               <Route path="/" exact component={Home}></Route>
               <Route path="/addarticle" exact component={AddArticle}></Route>
-              <Route path="/search" exact component={Search}></Route>
+              <Route path="/search" exact component={Search}></Route>  
             </Switch>
-          </div>
+          </Fade>
           <BottomBar/>
         </Router>
       );
