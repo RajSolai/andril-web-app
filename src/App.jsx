@@ -8,7 +8,6 @@ import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
-import { Fade } from "react-reveal"
 
 class App extends React.Component {
   constructor(props) {
@@ -67,13 +66,11 @@ class App extends React.Component {
               </li>
             </ul>
           </div>
-          <Fade>
             <Switch>
               <Route path="/" exact component={Home}></Route>
               <Route path="/addarticle" exact component={AddArticle}></Route>
               <Route path="/search" exact component={Search}></Route>  
             </Switch>
-          </Fade>
           <BottomBar/>
         </Router>
       );

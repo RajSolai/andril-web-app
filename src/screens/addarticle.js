@@ -132,7 +132,7 @@ class AddArticle extends Component {
                 />
                 <div className="togglewrapper">
                   <div className="toggle">
-                    <input type="checkbox" id="mustread" name="mustread" defaultChecked={this.state.mustread} onChange={this.handleCheckBox}/>
+                    <input type="checkbox" id="mustread" name="mustread" defaultChecked={this.state.mustread} onChange={this.handleCheckBox} value="false"/>
                     <label>Mark as Must Read ? <span role="img" aria-label="emoji">🙄</span> </label>
                   </div>
                 </div>

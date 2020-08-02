@@ -7,7 +7,7 @@ import "./listitem.scss"
 class ListItem extends Component{
 	render() {
 		return (
-			<Link className="listitem">
+			<Link className="listitem" to="">
 			<div className="listbox">
 				<li><h3>{this.props.title}</h3></li>
 				<li><p>{this.props.content}</p></li>

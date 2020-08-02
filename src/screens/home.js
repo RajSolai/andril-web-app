@@ -28,12 +28,6 @@ const SearchContainer = styled.div`
     border-radius:20px;
 `
 
-const FlexBox = styled.div`
-    display:flex;
-    justify-content:center;
-    align-content:center;
-    text-align:center;
-`
 const SearchContent = styled.div`
     display:none;
     flex-direction:column;
@@ -56,7 +50,7 @@ class Home extends Component {
         this.state={
             mustread : [],
             mostpop : [],
-            searchKey: null,
+            searchKey: "",
         };
         this.handleSearch = this.handleSearch.bind(this);
     }

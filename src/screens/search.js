@@ -2,7 +2,6 @@
 // actually all articles
 import React, { Component } from "react";
 import "../theme/App.scss"
-import { FaSearch } from "react-icons/fa";
 import styled from 'styled-components'
 import {Fade} from "react-reveal";
 import Card from "../components/card";
