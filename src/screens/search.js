@@ -4,9 +4,10 @@ import React, { Component } from "react";
 import "../theme/App.scss"
 import styled from 'styled-components'
 import {Fade} from "react-reveal";
-import Card from "../components/card";
 import ListItem from "../components/listitem";
+import Axios from "axios";
 
+const defaultImage = "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
 const CategoryButton = styled.button`
   background: #ff847c;
@@ -26,23 +27,37 @@ const CardContainer = styled.div`
 export default class Search extends Component {
 	constructor(props) {
 		super(props);
-		this.handleCategoryChange = this.handleCategoryChange.bind();
+		this.state={
+			data:[],
+		};
+		this.handleCategoryChange = this.handleCategoryChange.bind(this);
 	}
 	componentDidMount() {
 		document.getElementById("bottombar").style.display="none";
+		this.getData("tamil");
 	}
 	componentWillUnmount() {
    		this.changebottombarTogglevisible(); 
   	}
 	handleCategoryChange(event){
-		let category = event.target.id;
-		console.log(category);
+		console.log(event.target.id);
+		this.getData(event.target.id);
 	}
 	changebottombarTogglevisible(){
-    if (document.documentElement.clientWidth <= 600) {
-      document.getElementById("bottombar").style.display="flex";
-    }
-  }
+	    if (document.documentElement.clientWidth <= 600) {
+	      document.getElementById("bottombar").style.display="flex";
+	    }
+  	}
+  	async getData(category){
+  		await Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/"+category).then((res) => {
+        console.log(res);
+		      this.setState({
+		        data: res.data.postdata,
+		      });
+	    }).catch(err=>{
+	        console.log(err);
+	    });
+  	}
 	render() {
 		return (
 			<Fade>
@@ -62,18 +77,15 @@ export default class Search extends Component {
 						<CategoryButton primary onClick={this.handleCategoryChange} id="crime_stories">Crime Stories</CategoryButton>
 					</div>
 					<CardContainer>
-					<Fade left>
-						{/* Display all the articles  */}
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-					</Fade>
+					{
+						this.state.data.map((data)=>(
+							<ListItem
+							 title={data.posttitle}
+							 content={data.postdesc}
+                  			 image={data.imagebin===null?defaultImage:data.imagebin}
+							 />
+						))
+					}
 					</CardContainer>
 				</div>
 			</div>

@@ -4,7 +4,6 @@ import ListItem from "../components/listitem";
 import "../theme/App.scss";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
-import { Fade } from "react-reveal";
 import Axios from "axios";
 
 //! change the default image
@@ -100,7 +99,7 @@ class Home extends Component {
   }
   async getMustRead() {
     // get must read articles
-    Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/mustread").then((res) => {
+    await Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/mustread").then((res) => {
         console.log(res);
       this.setState({
         mustread: res.data.postdata,
