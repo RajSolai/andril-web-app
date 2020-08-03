@@ -7,6 +7,7 @@ import Login from "./screens/login";
 import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
+import Article from "./screens/article";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
 
 class App extends React.Component {
@@ -70,6 +71,7 @@ class App extends React.Component {
               <Route path="/" exact component={Home}></Route>
               <Route path="/addarticle" exact component={AddArticle}></Route>
               <Route path="/search" exact component={Search}></Route>  
+              <Route path="/article/:id" exact component={Article}></Route>  
             </Switch>
           <BottomBar/>
         </Router>

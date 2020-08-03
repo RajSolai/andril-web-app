@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import {Fade} from "react-reveal";
+import Axios from "axios";
+
 
 class AddArticle extends Component {
   constructor(props) {
@@ -8,6 +10,9 @@ class AddArticle extends Component {
       coverimg: null,
       category: "Tamil",
       imgbase64: null,
+      posttitle:null,
+      body:null,
+      desc:null,
       mustread:false
     };
     this.fileChangedHandler = this.fileChangedHandler.bind(this);
@@ -16,17 +21,15 @@ class AddArticle extends Component {
     this._testupload = this._testupload.bind(this);
     this.handleCheckBox = this.handleCheckBox.bind(this);
   }
-  fileChangedHandler = (event) => {
+  fileChangedHandler(event) {
     const imgs = event.target.files[0];
     this.setState({ coverimg: imgs });
-  };
-  getbase64(file) {
     const _reader = new FileReader();
-    _reader.readAsDataURL(file);
+    _reader.readAsDataURL(imgs);
     _reader.onloadend = () => {
       this.setState({ imgbase64: _reader.result });
     };
-  }
+  };
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
@@ -49,15 +52,34 @@ class AddArticle extends Component {
   componentDidMount() {
     this.changebottombarPos();
   }
-  componentDidUnmount() {
+  componentWillUnmount() {
    this.changebottombarTogglevisible(); 
   }
   uploadhandler() {
-    this._testupload();
+    //! this._testupload();
+    let data={
+      poster:localStorage.getItem("uid"),
+      mustread: this.state.mustread===true?"true":"false",
+      posttitle: this.state.posttitle,
+      postdesc: this.state.desc,
+      imagebin: this.state.imgbase64,
+    }
+    Axios.post("https://blooming-shelf-29088.herokuapp.com/api/posts/"+this.state.category,data).then((res)=>{
+      if (res.data.code==="PSTUPD") {
+        alert("Post Uploaded");
+      } else {
+         console.log(res);
+      }
+    }).catch(err=>{
+      console.log(err);
+    })
   }
   //! Test function
   _testupload() {
-    console.log("TOTAL IMAGES" + this.state.coverimg);
+    console.log("TITLE",this.state.posttitle);
+    console.log("DESC",this.state.desc);
+    console.log("BODY",this.state.body);
+    console.log("IMAGE" + this.state.imgbase64);
     console.log("CATEGORY" + this.state.category);
     console.log("mustread?"+this.state.mustread);
   }
@@ -93,9 +115,17 @@ class AddArticle extends Component {
                   name="posttitle"
                   id="posttitle"
                   placeholder="Title of Post"
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="desc"
+                  id="desc"
+                  placeholder="Short Description"
+                  onChange={this.handleInputChange}
                 />
                 <div className="textarea">
-                  <textarea name="" id="" cols="43" rows="30" placeholder="Type in the Article in MarkDown Format"></textarea>
+                  <textarea name="body" id="" onChange={this.handleInputChange} cols="43" rows="30" placeholder="Type in the Article in MarkDown Format"></textarea>
                 </div>
                 <input type="file"className="filepicker" onChange={this.fileChangedHandler} />
                 <button onClick={this.uploadhandler}>Post Article</button>
@@ -129,6 +159,14 @@ class AddArticle extends Component {
                   name="posttitle"
                   id="posttitle"
                   placeholder="Title of Post"
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="desc"
+                  id="desc"
+                  placeholder="Short Description"
+                  onChange={this.handleInputChange}
                 />
                 <div className="togglewrapper">
                   <div className="toggle">
@@ -143,7 +181,7 @@ class AddArticle extends Component {
           </div>
           <div className="right-aa">
             <div className="textarea">
-              <textarea name="" id="" cols="70" rows="20" placeholder="Type in the Article in MarkDown Format"></textarea>
+              <textarea name="body" id="" onChange={this.handleInputChange} cols="70" rows="20" placeholder="Type in the Article in MarkDown Format"></textarea>
             </div>
           </div>
         </div>    

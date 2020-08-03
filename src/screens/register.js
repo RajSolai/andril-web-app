@@ -4,6 +4,19 @@ import "../theme/App.scss";
 import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
 import { FaHeart } from "react-icons/fa";
+import styled from "styled-components";
+
+const MessageLabel = styled.span`
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: solid 2px #e8505b;
+  background: rgba(232, 80, 91, 0.3);
+  display: none;
+  color: ${(props) => props.color};
+  font-weight: 500;
+`;
 
 class Register extends Component {
   constructor(props) {
@@ -22,9 +35,19 @@ class Register extends Component {
       email: this.state.email,
       pass: this.state.password,
     };
-    Axios.post("", data).then((res) => {
-      console.log(res);
-      this.props.history.push("/home");
+    Axios.post(
+      "https://blooming-shelf-29088.herokuapp.com/api/signin",
+      data
+    ).then((res) => {
+      if (res.data.code === "USRCRT") {
+        localStorage.setItem("uid", res.data.uid);
+        window.location.reload();
+      } else {
+        if (res.data.code === "USRFND") {
+          document.getElementById("usrfnddes").style.display = "block";
+          document.getElementById("usrfnd").style.display = "block";
+        }
+      }
     });
   }
   handleInputChange(event) {
@@ -40,8 +63,16 @@ class Register extends Component {
       <div className="login-area">
         <div className="normal-greet">
           {/* for mobile view */}
-          <h2>Login</h2>
+          <h2>Welcome to Andril</h2>
           <div className="form">
+            <input
+              type="text"
+              onChange={this.handleInputChange}
+              name="name"
+              id="name"
+              placeholder="Enter your Display Name"
+              aria-label="Display Name"
+            />
             <input
               type="email"
               onChange={this.handleInputChange}
@@ -50,6 +81,9 @@ class Register extends Component {
               placeholder="Enter your Email ID"
               aria-label="Email Address"
             />
+            <MessageLabel color="#e8505b" id="usrfnd">
+              Email id already in Use
+            </MessageLabel>{" "}
             <input
               type="password"
               onChange={this.handleInputChange}
@@ -57,12 +91,12 @@ class Register extends Component {
               id="password"
               placeholder="Enter your Password"
             />
-            <button onClick={this.signup}>Log in</button>
+            <button onClick={this.signup}>Sign Up</button>
           </div>
-          <div className="regislink">
-            <Link to="/register" className="link">
+          <div className="regislink mobileregis">
+            <Link to="/" className="link">
               <span style={{ fontSize: "16px", fontStyle: "normal" }}>
-                New to Andril ? Create Account
+                Have an Account? Login !
               </span>
             </Link>
           </div>
@@ -88,6 +122,9 @@ class Register extends Component {
                   placeholder="Enter your Email ID"
                   aria-label="Email Address"
                 />
+                <MessageLabel color="#e8505b" id="usrfnddes">
+                  Email id already in Use
+                </MessageLabel>{" "}
                 <input
                   type="password"
                   onChange={this.handleInputChange}

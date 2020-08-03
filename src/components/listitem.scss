@@ -1,11 +1,23 @@
 //listitem.scss
 .listitem {
-	padding: 0;
-	margin: 0;
+	border-radius: 6px;
+	box-shadow: 1px 1px 6px rgba(0,0,0,.1);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 1rem;
+	margin: .4em 0 .4em 0;
 	text-decoration: none;
 	color: #000;
 	.listbox{
 		border-radius: 8px;
+	}
+	.listimg{
+		img{
+			border-radius: 15px;
+			height: 90px;
+			width: 100px;
+		}
 	}
 	li{
 		margin: 0;

@@ -5,6 +5,7 @@ import "../theme/App.scss"
 import styled from 'styled-components'
 import {Fade} from "react-reveal";
 import Card from "../components/card";
+import ListItem from "../components/listitem";
 
 
 const CategoryButton = styled.button`
@@ -13,13 +14,12 @@ const CategoryButton = styled.button`
   border: none;
   color: #ffffff;
   font-size:.9rem;
-  margin: 0.5em;
+  margin-right: 0.5em;
   padding: 1em;
 `
 const CardContainer = styled.div`
 	display:flex;
-	flex-wrap:wrap;
-	flex-direction:row;
+	flex-direction:column;
 	justify-content:center;
 `
 
@@ -62,13 +62,18 @@ export default class Search extends Component {
 						<CategoryButton primary onClick={this.handleCategoryChange} id="crime_stories">Crime Stories</CategoryButton>
 					</div>
 					<CardContainer>
+					<Fade left>
 						{/* Display all the articles  */}
-						<Card title="Sample Card 1" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
-			            <Card title="Sample Card 2" content="lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+			            <ListItem title="ListItem1" content="Lorem ipusum" image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"/>
+					</Fade>
 					</CardContainer>
 				</div>
 			</div>

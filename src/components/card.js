@@ -1,20 +1,37 @@
 import React, { Component } from "react";
 import "../theme/App.scss";
 import "./card.scss"
+import {Link} from "react-router-dom";
+
 
 class Card extends Component {
   render() {
-    return (
-      <div className="card">
-      	<img src={this.props.image} className="card-image" alt="Article"/>
+    if(this.props.variant==="loading"){
+      return (
+      <Link className="card loading">
+        <div className="card-image dummy"/>
       <div className="card-area">
       <p className="card-title">{this.props.title}</p>
-      	<div className="card-text">
-      	{this.props.content}     	
-      	</div>
+        <div className="card-text">
+        {this.props.content}       
+        </div>
       </div>
-      </div>
+      </Link>
     );
+    }else{
+      return (
+      <Link className="card" to={"/article/"+this.props.id}>
+        <img src={this.props.image} className="card-image" alt="Article"/>
+      <div className="card-area">
+      <p className="card-title">{this.props.title}</p>
+        <div className="card-text">
+        {this.props.content}       
+        </div>
+      </div>
+      </Link>
+    );
+    }
+    
   }
 }
 
