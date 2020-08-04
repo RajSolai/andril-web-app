@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import {Fade} from "react-reveal";
+import {Slide} from "react-reveal";
 import Axios from "axios";
-
+import Swal from 'sweetalert2';
+import womansittinglaptop from "../assets/womansittinglaptop.svg";
 
 class AddArticle extends Component {
   constructor(props) {
@@ -13,12 +14,12 @@ class AddArticle extends Component {
       posttitle:null,
       body:null,
       desc:null,
-      mustread:false
+      mustread:false,
+      alert:false,
     };
     this.fileChangedHandler = this.fileChangedHandler.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.uploadhandler = this.uploadhandler.bind(this);
-    this._testupload = this._testupload.bind(this);
     this.handleCheckBox = this.handleCheckBox.bind(this);
   }
   fileChangedHandler(event) {
@@ -56,17 +57,28 @@ class AddArticle extends Component {
    this.changebottombarTogglevisible(); 
   }
   uploadhandler() {
+    Swal.fire({
+    html: '<img src="'+womansittinglaptop+'" alt="uploading" height="100px" width="100px" /> <br/> Post is Uploading Please Wait',
+    showConfirmButton:false,
+    })
     //! this._testupload();
     let data={
       poster:localStorage.getItem("uid"),
       mustread: this.state.mustread===true?"true":"false",
       posttitle: this.state.posttitle,
       postdesc: this.state.desc,
+      body: this.state.body,
       imagebin: this.state.imgbase64,
     }
     Axios.post("https://blooming-shelf-29088.herokuapp.com/api/posts/"+this.state.category,data).then((res)=>{
       if (res.data.code==="PSTUPD") {
-        alert("Post Uploaded");
+        Swal.close();
+        Swal.fire({
+          title: 'Post Uploaded!',
+          text: 'Do you want to continue',
+          icon: 'success',
+          confirmButtonText: 'Okay'
+        })  
       } else {
          console.log(res);
       }
@@ -74,19 +86,10 @@ class AddArticle extends Component {
       console.log(err);
     })
   }
-  //! Test function
-  _testupload() {
-    console.log("TITLE",this.state.posttitle);
-    console.log("DESC",this.state.desc);
-    console.log("BODY",this.state.body);
-    console.log("IMAGE" + this.state.imgbase64);
-    console.log("CATEGORY" + this.state.category);
-    console.log("mustread?"+this.state.mustread);
-  }
   render() {
     return (
       <>
-      <Fade>
+      <Slide left>
       <div className="app">
         <div className="safearea articleform">
           <div className="mobile-view">
@@ -187,7 +190,7 @@ class AddArticle extends Component {
         </div>    
         </div>
       </div>
-      </Fade>
+      </Slide>
       </>
     );
   }

@@ -2,12 +2,15 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import "../theme/App.scss";
+import loadingandril from "../assets/loadingandril.svg"
+import marked from 'marked';
 
 export default class Article extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      isloading:true,
     };
   }
   componentWillMount() {
@@ -16,18 +19,31 @@ export default class Article extends Component {
     Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/search/id/"+articleid).then((res) => {
       console.log(res);
       if (res.data.code==="PSTDTA") {
-        this.setState({ data: res.data.postdata });
+        this.setState({ data: res.data.postdata , isloading: false });
+        document.getElementById("body").innerHTML=marked(res.data.postdata.body==null?"- no data found":res.data.postdata.body)
       }
     });
   }
   render() {
-    return (
-      <div className="app">
-        <div className="safearea article-layout">
-          <h3>{this.state.data.posttitle}</h3>
-          <article>{this.state.data.body}</article>
+    if (this.state.isloading) {
+      return (
+        <div className="app">
+          <div className="safearea center-layout">
+            <img src={loadingandril} alt="Loading"/>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="app">
+          <div className="safearea article-layout">
+            <h3>{this.state.data.posttitle}</h3>
+            <div id="body" className="article-body">
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
   }
 }

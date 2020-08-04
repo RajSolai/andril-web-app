@@ -6,6 +6,9 @@ import styled from 'styled-components'
 import {Fade} from "react-reveal";
 import ListItem from "../components/listitem";
 import Axios from "axios";
+import Nodata from "../components/nodata";
+import Loading from "../components/loading";
+
 
 const defaultImage = "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
@@ -15,6 +18,7 @@ const CategoryButton = styled.button`
   border: none;
   color: #ffffff;
   font-size:.9rem;
+  font-weight:500;
   margin-right: 0.5em;
   padding: 1em;
 `
@@ -28,7 +32,8 @@ export default class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			data:[],
+			data:null,
+			isloading:true,
 		};
 		this.handleCategoryChange = this.handleCategoryChange.bind(this);
 	}
@@ -40,6 +45,9 @@ export default class Search extends Component {
    		this.changebottombarTogglevisible(); 
   	}
 	handleCategoryChange(event){
+		this.setState({
+	        isloading: true,
+	      });
 		console.log(event.target.id);
 		this.getData(event.target.id);
 	}
@@ -50,10 +58,11 @@ export default class Search extends Component {
   	}
   	async getData(category){
   		await Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/"+category).then((res) => {
-        console.log(res);
-		      this.setState({
-		        data: res.data.postdata,
-		      });
+	      this.setState({
+	        data: res.data.postdata,
+	        isloading: false,
+	      });
+	      console.log(res.data.postdata);
 	    }).catch(err=>{
 	        console.log(err);
 	    });
@@ -78,13 +87,23 @@ export default class Search extends Component {
 					</div>
 					<CardContainer>
 					{
-						this.state.data.map((data)=>(
-							<ListItem
-							 title={data.posttitle}
-							 content={data.postdesc}
-                  			 image={data.imagebin===null?defaultImage:data.imagebin}
-							 />
-						))
+						this.state.isloading===true?(
+								<Loading></Loading>
+							):(
+								this.state.data.length===0?(
+									<Nodata></Nodata>
+								):(
+										this.state.data.map((data)=>(
+											<ListItem
+											 id={data.postid}
+											 title={data.posttitle}
+											 content={data.postdesc}
+				                  			 image={data.imagebin===null?defaultImage:data.imagebin}
+											 />
+										))
+									)
+							)
+						
 					}
 					</CardContainer>
 				</div>

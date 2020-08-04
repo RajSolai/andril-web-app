@@ -5,6 +5,9 @@ import "../theme/App.scss";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import Axios from "axios";
+import loadingandril from "../assets/loadingandril.svg"
+import Nodata from "../assets/Nodata.svg"
+
 
 //! change the default image
 const defaultImage = "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
@@ -51,6 +54,10 @@ const IconButton = styled.a`
   padding: 0.5em;
   display: block;
 `;
+const FlexBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 class Home extends Component {
   constructor(props) {
@@ -59,7 +66,7 @@ class Home extends Component {
       mustread: [],
       mostpop: [],
       searchKey: null,
-      searchres: [],
+      searchres: null,
       mustreadloading:true,
       mustpoploading:true,
       searchresloading:true,
@@ -87,12 +94,14 @@ class Home extends Component {
     }
   }
   async searchRecords(key) {
+    this.setState({searchresloading:true});
     // search for the item based on article name
     Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/search/" + key).then((res) => {
       this.setState({
         searchres: res.data.postdata,
         searchresloading: false
       });
+      console.dir(res);
     }).catch(err=>{
         console.log(err);
     });
@@ -137,14 +146,28 @@ class Home extends Component {
                 </span>
               </IconButton>
               <div>
-                {this.state.searchres.map((data) => (
-                  <ListItem
-                  id={data.postid}
-                  title={data.posttitle}
-                  content={data.postdesc===null?"No Description":data.postdesc}
-                  image={data.imagebin===null?defaultImage:data.imagebin}
-                />
-                ))}
+              {
+                 this.state.searchresloading===true?(
+                    <div className="center-layout">
+                      <img src={loadingandril} alt="loading"/>
+                    </div>
+                  ):(
+                    this.state.searchres.length===0?(
+                        <div className="center-layout">
+                          <img src={Nodata} alt="loading"/>
+                        </div>
+                      ):(
+                        this.state.searchres.map((data) => (
+                          <ListItem
+                            id={data.postid}
+                            title={data.posttitle}
+                            content={data.postdesc===null?"No Description":data.postdesc}
+                            image={data.imagebin===null?defaultImage:data.imagebin}
+                          />
+                    ))
+                  )
+                )
+              }
               </div>
             </SearchContent>
             <div id="homecontent">
@@ -153,11 +176,23 @@ class Home extends Component {
               <div className="homecard-horizontal-view">
               {
                  this.state.mustreadloading===true?(
+                  <FlexBox>
                     <Card
                       title="Loading"
                       content="Content Loading"
                       variant="loading"
-                    /> 
+                    />
+                    <Card
+                      title="Loading"
+                      content="Content Loading"
+                      variant="loading"
+                    />
+                    <Card
+                      title="Loading"
+                      content="Content Loading"
+                      variant="loading"
+                    />
+                  </FlexBox> 
                   ):(
                   this.state.mustread.map((data) => (
                     <Card

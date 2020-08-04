@@ -2,24 +2,28 @@ import React, { Component } from "react";
 import "../theme/App.scss";
 import "./card.scss"
 import {Link} from "react-router-dom";
+import {Fade} from "react-reveal";
 
 
 class Card extends Component {
   render() {
     if(this.props.variant==="loading"){
       return (
-      <Link className="card loading">
-        <div className="card-image dummy"/>
-      <div className="card-area">
-      <p className="card-title">{this.props.title}</p>
-        <div className="card-text">
-        {this.props.content}       
+        <Fade>
+        <Link className="card loading">
+          <div className="card-image dummy"/>
+        <div className="card-area">
+        <p className="card-title">{this.props.title}</p>
+          <div className="card-text">
+          {this.props.content}       
+          </div>
         </div>
-      </div>
-      </Link>
+        </Link>
+      </Fade>
     );
     }else{
       return (
+        <Fade>
       <Link className="card" to={"/article/"+this.props.id}>
         <img src={this.props.image} className="card-image" alt="Article"/>
       <div className="card-area">
@@ -29,6 +33,7 @@ class Card extends Component {
         </div>
       </div>
       </Link>
+      </Fade>
     );
     }
     
