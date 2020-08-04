@@ -67,13 +67,13 @@ class App extends React.Component {
               </li>
             </ul>
           </div>
-            <Switch>
-              <Route path="/" exact component={Home}></Route>
-              <Route path="/addarticle" exact component={AddArticle}></Route>
-              <Route path="/search" exact component={Search}></Route>  
-              <Route path="/article/:id" exact component={Article}></Route>  
-            </Switch>
-          <BottomBar/>
+          <Switch>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/addarticle" exact component={AddArticle}></Route>
+            <Route path="/search" exact component={Search}></Route>
+            <Route path="/article/:id" exact component={Article}></Route>
+          </Switch>
+          <BottomBar />
         </Router>
       );
     } else {

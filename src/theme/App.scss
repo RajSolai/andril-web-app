@@ -12,7 +12,7 @@
 .swal2-popup {
     font-family: "Inter", sans-serif;
 }
-.article-body{
+.article-body {
     font-family: 'Noto Serif', serif;
 }
 .center-layout {
@@ -20,14 +20,14 @@
     justify-content: center;
     align-items: center;
     transition: 300ms ease-in-out;
-    img{
+    img {
         margin-top: 5rem;
         height: 350px;
         width: 350px;
         @media only screen and (max-width: 1000px) {
             height: 300px;
             width: 300px;
-    }
+        }
     }
 }
 body {

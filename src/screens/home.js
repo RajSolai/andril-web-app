@@ -5,12 +5,12 @@ import "../theme/App.scss";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 import Axios from "axios";
-import loadingandril from "../assets/loadingandril.svg"
-import Nodata from "../assets/Nodata.svg"
-
+import loadingandril from "../assets/loadingandril.svg";
+import Nodata from "../assets/Nodata.svg";
 
 //! change the default image
-const defaultImage = "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
+const defaultImage =
+  "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
 const SearchBox = styled.input`
   background: #f5f5f5;
@@ -67,9 +67,9 @@ class Home extends Component {
       mostpop: [],
       searchKey: null,
       searchres: null,
-      mustreadloading:true,
-      mustpoploading:true,
-      searchresloading:true,
+      mustreadloading: true,
+      mustpoploading: true,
+      searchresloading: true,
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -94,29 +94,37 @@ class Home extends Component {
     }
   }
   async searchRecords(key) {
-    this.setState({searchresloading:true});
+    this.setState({ searchresloading: true });
     // search for the item based on article name
-    Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/search/" + key).then((res) => {
-      this.setState({
-        searchres: res.data.postdata,
-        searchresloading: false
-      });
-      console.dir(res);
-    }).catch(err=>{
+    Axios.get(
+      "https://blooming-shelf-29088.herokuapp.com/api/posts/search/" + key
+    )
+      .then((res) => {
+        this.setState({
+          searchres: res.data.postdata,
+          searchresloading: false,
+        });
+        console.dir(res);
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
   }
   async getMustRead() {
     // get must read articles
-    await Axios.get("https://blooming-shelf-29088.herokuapp.com/api/posts/mustread").then((res) => {
+    await Axios.get(
+      "https://blooming-shelf-29088.herokuapp.com/api/posts/mustread"
+    )
+      .then((res) => {
         console.log(res);
-      this.setState({
-        mustread: res.data.postdata,
-        mustreadloading: false
-      });
-    }).catch(err=>{
+        this.setState({
+          mustread: res.data.postdata,
+          mustreadloading: false,
+        });
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
   }
   async getRecent() {
     // get recent articles
@@ -146,36 +154,37 @@ class Home extends Component {
                 </span>
               </IconButton>
               <div>
-              {
-                 this.state.searchresloading===true?(
-                    <div className="center-layout">
-                      <img src={loadingandril} alt="loading"/>
-                    </div>
-                  ):(
-                    this.state.searchres.length===0?(
-                        <div className="center-layout">
-                          <img src={Nodata} alt="loading"/>
-                        </div>
-                      ):(
-                        this.state.searchres.map((data) => (
-                          <ListItem
-                            id={data.postid}
-                            title={data.posttitle}
-                            content={data.postdesc===null?"No Description":data.postdesc}
-                            image={data.imagebin===null?defaultImage:data.imagebin}
-                          />
-                    ))
-                  )
-                )
-              }
+                {this.state.searchresloading === true ? (
+                  <div className="center-layout">
+                    <img src={loadingandril} alt="loading" />
+                  </div>
+                ) : this.state.searchres.length === 0 ? (
+                  <div className="center-layout">
+                    <img src={Nodata} alt="loading" />
+                  </div>
+                ) : (
+                  this.state.searchres.map((data) => (
+                    <ListItem
+                      id={data.postid}
+                      title={data.posttitle}
+                      content={
+                        data.postdesc === null
+                          ? "No Description"
+                          : data.postdesc
+                      }
+                      image={
+                        data.imagebin === null ? defaultImage : data.imagebin
+                      }
+                    />
+                  ))
+                )}
               </div>
             </SearchContent>
             <div id="homecontent">
               <h3 style={{ margin: "none" }}>Must Read</h3>
               {/*for testing*/}
               <div className="homecard-horizontal-view">
-              {
-                 this.state.mustreadloading===true?(
+                {this.state.mustreadloading === true ? (
                   <FlexBox>
                     <Card
                       title="Loading"
@@ -192,18 +201,23 @@ class Home extends Component {
                       content="Content Loading"
                       variant="loading"
                     />
-                  </FlexBox> 
-                  ):(
+                  </FlexBox>
+                ) : (
                   this.state.mustread.map((data) => (
                     <Card
                       id={data.postid}
                       title={data.posttitle}
-                      content={data.postdesc===null?"No Description":data.postdesc}
-                      image={data.imagebin===null?defaultImage:data.imagebin}
+                      content={
+                        data.postdesc === null
+                          ? "No Description"
+                          : data.postdesc
+                      }
+                      image={
+                        data.imagebin === null ? defaultImage : data.imagebin
+                      }
                     />
-                    ))
-                  )
-              }
+                  ))
+                )}
               </div>
               <h3 style={{ margin: "none" }}>Recent Articles</h3>
               <div className="list-view">
