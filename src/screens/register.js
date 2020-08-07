@@ -3,8 +3,11 @@ import "../theme/App.scss";
 // eslint-disable-next-line no-unused-vars
 import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
-import { FaHeart } from "react-icons/fa";
 import styled from "styled-components";
+import andrillogo from "../assets/andrillogo.svg";
+import { Slide } from "react-reveal";
+import Swal from "sweetalert2";
+import womansittinglaptop from "../assets/womansittinglaptop.svg";
 
 const MessageLabel = styled.span`
   margin-bottom: 0.5rem;
@@ -30,6 +33,13 @@ class Register extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
   signup() {
+    Swal.fire({
+      html:
+        '<img src="' +
+        womansittinglaptop +
+        '" alt="uploading" height="100px" width="100px" /> <br/> Registering , Please Wait',
+      showConfirmButton: false,
+    });
     let data = {
       name: this.state.name,
       email: this.state.email,
@@ -40,11 +50,12 @@ class Register extends Component {
       data
     ).then((res) => {
       if (res.data.code === "USRCRT") {
+        Swal.close();
         localStorage.setItem("uid", res.data.uid);
         window.location.reload();
       } else {
         if (res.data.code === "USRFND") {
-          document.getElementById("usrfnddes").style.display = "block";
+          Swal.close();
           document.getElementById("usrfnd").style.display = "block";
         }
       }
@@ -60,59 +71,21 @@ class Register extends Component {
   }
   render() {
     return (
-      <div className="login-area">
-        <div className="normal-greet">
-          {/* for mobile view */}
-          <h2>Welcome to Andril</h2>
-          <div className="form">
-            <input
-              type="text"
-              onChange={this.handleInputChange}
-              name="name"
-              id="name"
-              placeholder="Enter your Display Name"
-              aria-label="Display Name"
-            />
-            <input
-              type="email"
-              onChange={this.handleInputChange}
-              name="email"
-              id="email"
-              placeholder="Enter your Email ID"
-              aria-label="Email Address"
-            />
-            <MessageLabel color="#e8505b" id="usrfnd">
-              Email id already in Use
-            </MessageLabel>{" "}
-            <input
-              type="password"
-              onChange={this.handleInputChange}
-              name="password"
-              id="password"
-              placeholder="Enter your Password"
-            />
-            <button onClick={this.signup}>Sign Up</button>
-          </div>
-          <div className="regislink mobileregis">
-            <Link to="/" className="link">
-              <span style={{ fontSize: "16px", fontStyle: "normal" }}>
-                Have an Account? Login !
-              </span>
-            </Link>
-          </div>
-        </div>
-        <div className="split-greet">
-          <div className="left gradient1">
-            <div className="left-area">
-              <h2>Create Andril Account</h2>
+      <>
+        <Slide bottom>
+          <div className="login-area">
+            <div className="normal-greet">
+              {/* for mobile view */}
+              <img src={andrillogo} alt="" />
+              <h2>Welcome to Andril</h2>
               <div className="form">
                 <input
                   type="text"
                   onChange={this.handleInputChange}
                   name="name"
                   id="name"
-                  placeholder="Enter your Name"
-                  aria-label="Name"
+                  placeholder="Enter your Display Name"
+                  aria-label="Display Name"
                 />
                 <input
                   type="email"
@@ -122,7 +95,7 @@ class Register extends Component {
                   placeholder="Enter your Email ID"
                   aria-label="Email Address"
                 />
-                <MessageLabel color="#e8505b" id="usrfnddes">
+                <MessageLabel color="#e8505b" id="usrfnd">
                   Email id already in Use
                 </MessageLabel>{" "}
                 <input
@@ -130,30 +103,21 @@ class Register extends Component {
                   onChange={this.handleInputChange}
                   name="password"
                   id="password"
-                  placeholder="Set your Password"
+                  placeholder="Enter your Password"
                 />
                 <button onClick={this.signup}>Sign Up</button>
               </div>
-            </div>
-            <div className="spacer1"></div>
-            <div className="regislink">
-              <Link to="/" className="link">
-                <span style={{ fontSize: "14px", fontStyle: "normal" }}>
-                  Already Have an Account ? Login in !
-                </span>
-              </Link>
+              <div className="regislink mobileregis">
+                <Link to="/" className="link">
+                  <span style={{ fontSize: "16px", fontStyle: "normal" }}>
+                    Have an Account? Login !
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="right register">
-            <p className="credits" style={{ color: "black" }}>
-              Thanks Unsplash for Awesome Photo{"  "}
-              <span>
-                <FaHeart color="red" />{" "}
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+        </Slide>
+      </>
     );
   }
 }

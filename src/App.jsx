@@ -8,6 +8,8 @@ import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
 import Article from "./screens/article";
+import andrillogo from "./assets/andrillogo.svg";
+import User from "./screens/user";
 import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
 
 class App extends React.Component {
@@ -24,13 +26,14 @@ class App extends React.Component {
     if (this.state.uid != null) {
       return (
         <Router>
-          <div className="nav-bar">
+          <div className="nav-bar" id="nav-bar">
             <ul className="nav-list">
               <li className="nav-itemp">
                 <Link to="/" className="link">
-                  <p className="brand">
+                  <span className="brand">
+                    <img src={andrillogo} alt="logo" className="brand-logo" height="28" width="28"/>
                     Andril<em>360</em>
-                  </p>
+                  </span>
                 </Link>
               </li>
               <li className="nav-linkcoll">
@@ -72,6 +75,7 @@ class App extends React.Component {
             <Route path="/addarticle" exact component={AddArticle}></Route>
             <Route path="/search" exact component={Search}></Route>
             <Route path="/article/:id" exact component={Article}></Route>
+            <Route path="/usr" exact component={User}></Route>
           </Switch>
           <BottomBar />
         </Router>

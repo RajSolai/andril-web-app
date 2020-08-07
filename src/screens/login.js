@@ -3,8 +3,11 @@ import "../theme/App.scss";
 // eslint-disable-next-line no-unused-vars
 import { withRouter, Link } from "react-router-dom";
 import Axios from "axios";
-import { FaHeart } from "react-icons/fa";
 import styled from "styled-components";
+import andrillogo from "../assets/andrillogo.svg";
+import { Fade } from "react-reveal";
+import Swal from "sweetalert2";
+import womansittinglaptop from "../assets/womansittinglaptop.svg";
 
 const MessageLabel = styled.span`
   margin-bottom: 0.5rem;
@@ -32,6 +35,13 @@ class Login extends Component {
     window.location.reload();
   }
   async login() {
+    Swal.fire({
+      html:
+        '<img src="' +
+        womansittinglaptop +
+        '" alt="uploading" height="100px" width="100px" /> <br/> Logining in , Please Wait',
+      showConfirmButton: false,
+    });
     let data = {
       email: this.state.email,
       pass: this.state.password,
@@ -41,16 +51,18 @@ class Login extends Component {
       data
     ).then((res) => {
       if (res.data.code === "USRLGD") {
+        Swal.close();
         localStorage.setItem("uid", res.data.userdata.uid);
         window.location.reload();
       } else {
         if (res.data.code === "PWDERR") {
+          Swal.close();
           document.getElementById("passerr").style.display = "block";
-          document.getElementById("passerrdes").style.display = "block";
         } else if (res.data.code === "USRERR") {
+          Swal.close();
           document.getElementById("nousr").style.display = "block";
-          document.getElementById("nousrdes").style.display = "block";
         } else {
+          Swal.close();
           console.log(res);
         }
       }
@@ -67,45 +79,12 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="login-area">
-        <div className="normal-greet">
-          {/* for mobile view */}
-          <h2>Login</h2>
-          <div className="form">
-            <input
-              type="email"
-              onChange={this.handleInputChange}
-              name="email"
-              id="email"
-              placeholder="Enter your Email ID"
-              aria-label="Email Address"
-            />
-            <input
-              type="password"
-              onChange={this.handleInputChange}
-              name="password"
-              id="password"
-              placeholder="Enter your Password"
-            />
-            <button onClick={this.login}>Log in</button>
-            <MessageLabel color="#e8505b" id="passerr">
-              Password incorrect
-            </MessageLabel>
-            <MessageLabel color="#e8505b" id="nousr">
-              No User Found for given Email
-            </MessageLabel>
-          </div>
-          <div className="regislink mobileregis">
-            <Link to="/register" className="link">
-              <span style={{ fontSize: "16px", fontStyle: "normal" }}>
-                New to Andril ? Create Account
-              </span>
-            </Link>
-          </div>
-        </div>
-        <div className="split-greet">
-          <div className="left gradient2">
-            <div className="left-area">
+      <>
+        <Fade top>
+          <div className="login-area">
+            <div className="normal-greet">
+              {/* for mobile view */}
+              <img src={andrillogo} alt="" />
               <h2>Login</h2>
               <div className="form">
                 <input
@@ -124,33 +103,24 @@ class Login extends Component {
                   placeholder="Enter your Password"
                 />
                 <button onClick={this.login}>Log in</button>
-                <MessageLabel color="#e8505b" id="passerrdes">
+                <MessageLabel color="#e8505b" id="passerr">
                   Password incorrect
                 </MessageLabel>
-                <MessageLabel color="#e8505b" id="nousrdes">
+                <MessageLabel color="#e8505b" id="nousr">
                   No User Found for given Email
                 </MessageLabel>
               </div>
-            </div>
-            <div className="spacer1"></div>
-            <div className="regislink">
-              <Link to="/register" className="link">
-                <span style={{ fontSize: "14px", fontStyle: "normal" }}>
-                  New to Andril ? Create Account
-                </span>
-              </Link>
+              <div className="regislink mobileregis">
+                <Link to="/register" className="link">
+                  <span style={{ fontSize: "16px", fontStyle: "normal" }}>
+                    New to Andril ? Create Account
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
-          <div className="right">
-            <p className="credits">
-              Thanks Unsplash for Awesome Photo{"  "}
-              <span>
-                <FaHeart color="pink" />{" "}
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+        </Fade>
+      </>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Slide } from "react-reveal";
+import { Fade } from "react-reveal";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import womansittinglaptop from "../assets/womansittinglaptop.svg";
@@ -98,7 +98,7 @@ class AddArticle extends Component {
   render() {
     return (
       <>
-        <Slide left>
+        <Fade>
           <div className="app">
             <div className="safearea articleform">
               <div className="mobile-view">
@@ -233,7 +233,7 @@ class AddArticle extends Component {
               </div>
             </div>
           </div>
-        </Slide>
+        </Fade>
       </>
     );
   }

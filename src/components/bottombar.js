@@ -11,22 +11,22 @@ class BottomBar extends Component {
       <div className="bottombar" id="bottombar">
         <Link className="link" to="">
           <button className="round-btn">
-            <FaInfoCircle />
+            <FaInfoCircle color="#ffffff" />
           </button>
         </Link>
         <Link className="link" to="addarticle">
           <button className="round-btn">
-            <FaPen />
+            <FaPen color="#ffffff" />
           </button>
         </Link>
         <Link className="link" to="search">
           <button className="round-btn">
-            <FaNewspaper />
+            <FaNewspaper color="#ffffff" />
           </button>
         </Link>
-        <Link className="link" to="">
+        <Link className="link" to="usr">
           <button className="round-btn">
-            <FaUserAlt />
+            <FaUserAlt color="#ffffff" />
           </button>
         </Link>
       </div>

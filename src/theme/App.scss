@@ -9,6 +9,29 @@
     -moz-text-size-adjust: none;
     text-size-adjust: none;
 }
+.reader-top-bar {
+    padding: 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .reader-top-bar-title {
+        margin: 0;
+    }
+    .ctrls {
+        display: flex;
+        flex-direction: row;
+        .darkmode-cont {
+            .darkmode-btn {
+                background: transparent;
+                border: none;
+                font-weight: bold;
+                color: #ff847c;
+            }
+        }
+    }
+}
 .swal2-popup {
     font-family: "Inter", sans-serif;
 }
@@ -33,7 +56,7 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #ffffff;
+    background: #ffffff;
 }
 .app {
     margin-top: 5rem;
@@ -41,6 +64,9 @@ body {
     padding-right: 1rem;
     margin-bottom: 2rem;
     height: 100vh;
+}
+.nomargin {
+    margin-top: 0rem;
 }
 Link, .link {
     text-decoration: none;
@@ -90,7 +116,7 @@ Link, .link {
     input, button {
         margin: 0.8em;
         outline: none;
-        &:active {
+        &:active,&:focus {
             outline: none;
         }
     }
@@ -112,7 +138,7 @@ Link, .link {
         }
     }
     button {
-        background-color: $primary;
+        background-color: $secondary;
         color: $primary-text-invert;
         border-radius: 6px;
         border: none;
@@ -121,11 +147,14 @@ Link, .link {
         font-family: "Inter", sans-serif;
         font-weight: 600;
         &:hover {
-            background-color: $primary-shade;
+            background-color: $secondary-tint;
         }
         @media only screen and (max-width: 600px) {
             padding: 1rem;
             font-size: 1rem;
+        }
+        &:focus{
+            outline: none;
         }
     }
 }
@@ -135,7 +164,7 @@ Link, .link {
         font-size: 1rem;
     }
     Link, .link {
-        color: $primary;
+        color: $secondary;
         text-decoration: none;
         outline: none;
         &:active {
@@ -163,28 +192,25 @@ Link, .link {
 }
 .normal-greet {
     height: 100vh;
-    display: none;
+    display: flex;
     background-color: #ffffff;
     text-align: center;
     align-items: center;
     align-content: center;
     justify-content: center;
     flex-direction: column;
-    @media only screen and (max-width: 1000px) {
-        display: flex;
-    }
     .mobileregis {
         display: block;
         background: transparent;
-        color: $primary;
+        color: $secondary;
         border-radius: 6px;
-        border: solid 1px $primary;
+        border: solid 1px $secondary;
         padding: 0.5rem;
         font-size: 1rem;
         font-family: "Inter", sans-serif;
         font-weight: 600;
         &:hover {
-            background-color: $primary-shade;
+            background-color: $secondary-tint;
             color: #ffffff;
         }
         @media only screen and (max-width: 600px) {
@@ -220,17 +246,24 @@ Link, .link {
     font-family: "Montserrat", sans-serif;
     margin: 1rem;
     font-weight: 900;
+    @media screen and (max-width: 600px) {
+        .brand-logo {
+            display: none;
+        }
+        display: block;
+    }
 }
 .back-btn {
     display: none;
 }
 .nav-bar {
+    display: block;
     z-index: 1;
     margin: 0;
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, .9);
     text-align: center;
     width: 100%;
     color: $primary-text;
@@ -280,7 +313,7 @@ Link, .link {
                 .nav-link {
                     color: #fff;
                     border-radius: 6px;
-                    background: #ff847c;
+                    background: $secondary;
                     box-shadow: 1px 1px 8px rgba(0, 0, 0, .5);
                     a {
                         color: #fff;
@@ -370,6 +403,9 @@ Link, .link {
                             font-size: 0.7rem;
                             font-family: "Inter", sans-serif;
                             font-weight: 500;
+                            :focus{
+                                outline: none;
+                            }
                         }
                     }
                 }
@@ -523,7 +559,41 @@ Link, .link {
 }
 .article-layout {
     padding: .2rem;
-    margin-top: 6rem;
+    margin-top: 0rem;
+}
+.user-account {
+    display: block;
+    margin-top: 5rem;
+    padding: 1rem;
+    .box-cont {
+        display: flex;
+        flex-direction: row;
+        @media screen and (max-width: 600px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    button {
+        background-color: $secondary;
+        color: $primary-text-invert;
+        border-radius: 6px;
+        border: none;
+        padding: 0.5rem;
+        margin: 1rem;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        &:hover {
+            background-color: $secondary-tint;
+        }
+        &:focus{
+            outline: none;
+        }
+        @media only screen and (max-width: 600px) {
+            padding: 1rem;
+            font-size: 1rem;
+        }
+    }
 }
 @media only screen and (max-width: 600px) {
     .nav-linkcoll {
