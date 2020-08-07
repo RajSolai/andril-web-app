@@ -42,14 +42,14 @@ export default class User extends Component {
 								<h3>
 									Welcome{" "}
 									<span style={{ color: "#ff847c" }}>
-										{this.state.userdata.length === 0
+										{this.state.userdata=== undefined
 											? "loading"
 											: this.state.userdata.displayname}
 									</span>{" "}
 								</h3>
 								<p>
 									<strong>Email :</strong>{" "}
-									{this.state.userdata.length === 0
+									{this.state.userdata === undefined
 										? "loading"
 										: this.state.userdata.emailid}
 								</p>
