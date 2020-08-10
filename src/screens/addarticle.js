@@ -122,6 +122,7 @@ class AddArticle extends Component {
                     <option value="tech">Technology</option>
                     <option value="crime_stories">Crime Stories</option>
                   </select>
+                  <label htmlFor="posttitle">Title :</label>
                   <input
                     type="text"
                     name="posttitle"
@@ -129,6 +130,7 @@ class AddArticle extends Component {
                     placeholder="Title of Post"
                     onChange={this.handleInputChange}
                   />
+                  <label htmlFor="desc">Description :</label>
                   <input
                     type="text"
                     name="desc"
@@ -136,10 +138,11 @@ class AddArticle extends Component {
                     placeholder="Short Description"
                     onChange={this.handleInputChange}
                   />
+                  <label htmlFor="body">Body of Post :</label>
                   <div className="textarea">
                     <textarea
                       name="body"
-                      id=""
+                      id="body"
                       onChange={this.handleInputChange}
                       cols="43"
                       rows="30"

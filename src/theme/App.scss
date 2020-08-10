@@ -199,6 +199,13 @@ Link, .link {
     align-content: center;
     justify-content: center;
     flex-direction: column;
+    .form{
+        text-align: left;
+        label{
+            margin-left: .8rem;
+            font-weight: 500;
+        }
+    }
     .mobileregis {
         display: block;
         background: transparent;
@@ -263,7 +270,7 @@ Link, .link {
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(255, 255, 255, .1);
     text-align: center;
     width: 100%;
     color: $primary-text;
@@ -271,6 +278,7 @@ Link, .link {
         display: none;
     }
     -ms-overflow-style: none;
+    backdrop-filter: blur(6px);
     .nav-list {
         padding-left: 1rem;
         display: flex;
@@ -493,6 +501,10 @@ Link, .link {
                 }
                 border-radius: 6px;
             }
+        }
+        label{
+            margin-left: .8rem;
+            font-weight: 500;
         }
     }
 }

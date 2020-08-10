@@ -87,6 +87,7 @@ class Login extends Component {
               <img src={andrillogo} alt="" />
               <h2>Login</h2>
               <div className="form">
+                <label htmlFor="email">Email ID :</label>
                 <input
                   type="email"
                   onChange={this.handleInputChange}
@@ -95,6 +96,7 @@ class Login extends Component {
                   placeholder="Enter your Email ID"
                   aria-label="Email Address"
                 />
+                <label htmlFor="email">Password :</label>
                 <input
                   type="password"
                   onChange={this.handleInputChange}

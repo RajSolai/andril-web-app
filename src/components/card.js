@@ -22,7 +22,7 @@ class Card extends Component {
       return (
         <Fade>
           <Link className="card" to={"/article/" + this.props.id}>
-            <img src={this.props.image} className="card-image" alt="Article" />
+            <img src={this.props.image} className="card-image" alt={this.props.title} />
             <div className="card-area">
               <p className="card-title">{this.props.title}</p>
               <div className="card-text">{this.props.content}</div>

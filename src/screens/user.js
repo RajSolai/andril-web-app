@@ -57,10 +57,12 @@ export default class User extends Component {
 									<ColorBox
 										color={"#d54062"}
 										image={userpageimg1}
+										alt="Usage Data"
 									></ColorBox>
 									<ColorBox
 										color={"#f9d56e"}
 										image={userpageimg2}
+										alt="Share Andril"
 									></ColorBox>
 								</div>
 								<button onClick={this.signOut}>Sign Out</button>

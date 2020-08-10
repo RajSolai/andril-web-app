@@ -21,7 +21,7 @@ class ListItem extends Component {
 					<div className="listimg">
 						<img
 							src={this.props.image}
-							alt=""
+							alt={this.props.title}
 							height="80px"
 							width="80px"
 						/>
