@@ -9,7 +9,7 @@ class BottomBar extends Component {
   render() {
     return (
       <div className="bottombar" id="bottombar">
-        <Link className="link" to="">
+        <Link className="link" to="about">
           <button className="round-btn">
             <FaInfoCircle color="#ffffff" />
           </button>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "./theme/App.scss";
 import AddArticle from "./screens/addarticle";
 import Home from "./screens/home";
+import Info from "./screens/info";
 import Login from "./screens/login";
 import Search from "./screens/search";
 import BottomBar from "./components/bottombar";
@@ -76,6 +77,7 @@ class App extends React.Component {
             <Route path="/search" exact component={Search}></Route>
             <Route path="/article/:id" exact component={Article}></Route>
             <Route path="/usr" exact component={User}></Route>
+            <Route path="/about" exact component={Info}></Route>
           </Switch>
           <BottomBar />
         </Router>

@@ -36,7 +36,7 @@
     font-family: "Inter", sans-serif;
 }
 .article-body {
-    font-family: 'Noto Serif', serif;
+    font-family: "Noto Serif", serif;
 }
 .center-layout {
     display: flex;
@@ -68,7 +68,8 @@ body {
 .nomargin {
     margin-top: 0rem;
 }
-Link, .link {
+Link,
+.link {
     text-decoration: none;
     outline: none;
     &:active {
@@ -113,10 +114,12 @@ Link, .link {
 .form {
     display: inline-flex;
     flex-direction: column;
-    input, button {
+    input,
+    button {
         margin: 0.8em;
         outline: none;
-        &:active,&:focus {
+        &:active,
+        &:focus {
             outline: none;
         }
     }
@@ -153,7 +156,7 @@ Link, .link {
             padding: 1rem;
             font-size: 1rem;
         }
-        &:focus{
+        &:focus {
             outline: none;
         }
     }
@@ -163,7 +166,8 @@ Link, .link {
         padding: 1rem;
         font-size: 1rem;
     }
-    Link, .link {
+    Link,
+    .link {
         color: $secondary;
         text-decoration: none;
         outline: none;
@@ -199,10 +203,10 @@ Link, .link {
     align-content: center;
     justify-content: center;
     flex-direction: column;
-    .form{
+    .form {
         text-align: left;
-        label{
-            margin-left: .8rem;
+        label {
+            margin-left: 0.8rem;
             font-weight: 500;
         }
     }
@@ -270,7 +274,7 @@ Link, .link {
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(255, 255, 255, 0.1);
     text-align: center;
     width: 100%;
     color: $primary-text;
@@ -288,7 +292,8 @@ Link, .link {
         flex-direction: row;
         text-decoration: none;
         list-style: none;
-        Link, .link {
+        Link,
+        .link {
             text-decoration: none;
             outline: none;
             &:active {
@@ -305,8 +310,8 @@ Link, .link {
             padding-right: 2rem;
             transition: ease 200ms;
             .nav-link {
-                margin: .2em;
-                padding: .5em;
+                margin: 0.2em;
+                padding: 0.5em;
                 display: block;
                 color: $primary-text;
                 text-decoration: none; //font-weight: 500;
@@ -322,7 +327,7 @@ Link, .link {
                     color: #fff;
                     border-radius: 6px;
                     background: $secondary;
-                    box-shadow: 1px 1px 8px rgba(0, 0, 0, .5);
+                    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
                     a {
                         color: #fff;
                     }
@@ -339,7 +344,8 @@ Link, .link {
         list-style: none;
         .nav-item {
             padding-right: 2rem;
-            Link, .link {
+            Link,
+            .link {
                 text-decoration: none;
                 outline: none;
                 &:active {
@@ -411,7 +417,7 @@ Link, .link {
                             font-size: 0.7rem;
                             font-family: "Inter", sans-serif;
                             font-weight: 500;
-                            :focus{
+                            :focus {
                                 outline: none;
                             }
                         }
@@ -427,8 +433,8 @@ Link, .link {
                 justify-items: center;
                 textarea {
                     outline: none;
-                    font-family: 'Noto Serif', serif;
-                    padding: .5em;
+                    font-family: "Noto Serif", serif;
+                    padding: 0.5em;
                     border: 1px solid #ffffff;
                     background-color: #f5f5f5;
                     &::placeholder {
@@ -486,14 +492,14 @@ Link, .link {
             }
         }
         input {
-            padding: 1em 0 1em .5em;
+            padding: 1em 0 1em 0.5em;
         }
         .textarea {
             justify-items: center;
             textarea {
                 outline: none;
-                font-family: 'Noto Serif', serif;
-                padding: .5em;
+                font-family: "Noto Serif", serif;
+                padding: 0.5em;
                 border: 1px solid #ffffff;
                 background-color: #f5f5f5;
                 &::placeholder {
@@ -502,8 +508,8 @@ Link, .link {
                 border-radius: 6px;
             }
         }
-        label{
-            margin-left: .8rem;
+        label {
+            margin-left: 0.8rem;
             font-weight: 500;
         }
     }
@@ -520,7 +526,7 @@ Link, .link {
     }
 }
 .list-view {
-    padding: .3rem;
+    padding: 0.3rem;
     white-space: nowrap;
     overflow-y: scroll;
     overflow-x: auto;
@@ -537,7 +543,7 @@ Link, .link {
 .homecard-horizontal-view {
     display: flex;
     flex-wrap: nowrap;
-    padding: .5rem;
+    padding: 0.5rem;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -552,7 +558,7 @@ Link, .link {
 }
 .search-layout {
     .search-categories {
-        padding: .5rem 0 0 0;
+        padding: 0.5rem 0 0 0;
         margin-bottom: 1em;
         overflow-x: scroll;
         overflow-y: hidden;
@@ -570,7 +576,7 @@ Link, .link {
     }
 }
 .article-layout {
-    padding: .2rem;
+    padding: 0.2rem;
     margin-top: 0rem;
 }
 .user-account {
@@ -598,7 +604,7 @@ Link, .link {
         &:hover {
             background-color: $secondary-tint;
         }
-        &:focus{
+        &:focus {
             outline: none;
         }
         @media only screen and (max-width: 600px) {
@@ -607,6 +613,73 @@ Link, .link {
         }
     }
 }
+.banner-holder {
+    display: flex;
+    justify-content: center;
+    .banner {
+        position: absolute;
+        margin-top: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        height: 80px;
+        color: #fff;
+        width: 330px;
+        padding: 1em;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        box-shadow: 2px 2px 6px rgba(102, 126, 234, 0.5);
+        img {
+            margin-left: 1rem;
+            height: 40px;
+            width: 40px;
+            color: #fff;
+            fill: #fff;
+        }
+        p {
+            font-size: 38px;
+            font-family: cursive;
+        }
+    }
+}
+.infotxt {
+    padding: 0.5em;
+    position: absolute;
+    top: 15em;
+}
+.sharebtns {
+    padding: 0.5em;
+    position: absolute;
+    top: 23em;
+    width: 85vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    button {
+        text-align: center;
+        align-items: center;
+        margin: 0.3em;
+        padding: 1em;
+        border: none;
+        font-size: 1.1rem;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+        color: #fff;
+        font-weight: 500;
+        background: $secondary;
+        border-radius: 8px;
+        &:focus {
+            outline: none;
+        }
+    }
+    .tl {
+        background: #0088cc;
+    }
+    .wa {
+        background: #25d366;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .nav-linkcoll {
         display: none;

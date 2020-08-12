@@ -63,6 +63,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      recent: [],
       mustread: [],
       mostpop: [],
       searchKey: null,
@@ -76,6 +77,7 @@ class Home extends Component {
   componentDidMount() {
     console.log("component loaded");
     this.getMustRead();
+    this.getRecent();
   }
   handleSearch(event) {
     document.getElementById("searchcontent").style.display = "flex";
@@ -128,6 +130,18 @@ class Home extends Component {
   }
   async getRecent() {
     // get recent articles
+    await Axios.get(
+      "https://blooming-shelf-29088.herokuapp.com/api/posts/recents"
+    )
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          recent: res.data.postdata,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   openArticle(title, content) {
     localStorage.setItem("title", title);
@@ -221,51 +235,14 @@ class Home extends Component {
               </div>
               <h3 style={{ margin: "none" }}>Recent Articles</h3>
               <div className="list-view">
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
-                <ListItem
-                  title="ListItem1"
-                  content="Lorem ipusum"
-                  image="https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg"
-                />
+                {this.state.recent.map((data) => (
+                  <ListItem
+                    id={data.postid}
+                    title={data.posttitle}
+                    content={data.postdesc}
+                    image={data.imagebin}
+                  />
+                ))}
               </div>
             </div>
           </div>
