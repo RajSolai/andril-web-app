@@ -31,6 +31,17 @@ export default class Article extends Component {
             ? "- no data found"
             : res.data.postdata.body
         );
+        /*
+        document.getElementById("body-tamil").innerHTML = marked(
+          res.data.postdata.bodytamil == null
+            ? "- no data found"
+            : res.data.postdata.bodytamil
+        );
+        */
+        document.getElementById("body-tamil").innerHTML =
+          res.data.postdata.bodytamil == null
+            ? "- no data found"
+            : res.data.postdata.bodytamil;
       }
     });
   }
@@ -58,12 +69,24 @@ export default class Article extends Component {
     document.body.style.backgroundColor = "rgb(255, 255, 255)";
     document.body.style.color = "rgb(0, 0, 0)";
   }
+  changeView() {
+    if (document.getElementById("body-tamil").style.display === "") {
+      document.getElementById("body").style.display = "";
+      document.getElementById("body-tamil").style.display = "none";
+      document.getElementById("view-btn").innerHTML = "View in <br/> Tamil";
+    } else {
+      document.getElementById("body").style.display = "none";
+      document.getElementById("body-tamil").style.display = "";
+      document.getElementById("view-btn").innerHTML = "View in <br/> English";
+    }
+  }
   render() {
     if (this.state.isloading) {
       return (
         <div className="app">
           <div className="safearea center-layout">
             <img src={loadingandril} alt="Loading" />
+            <div id="body-tamil"></div>
           </div>
         </div>
       );
@@ -75,6 +98,15 @@ export default class Article extends Component {
               {this.state.data.posttitle}
             </h3>
             <div className="ctrls">
+              <div className="tamilview">
+                <button
+                  className="view-btn"
+                  id="view-btn"
+                  onClick={this.changeView}
+                >
+                  View in <br /> Tamil
+                </button>
+              </div>
               <div className="darkmode-cont">
                 <button
                   className="darkmode-btn"
@@ -88,7 +120,16 @@ export default class Article extends Component {
           </div>
           <div className=" nomargin app">
             <div className="safearea">
-              <div id="body" className="article-body"></div>
+              <div className="image-cont">
+                <img src={this.state.data.imagebin} height="300px" width="300px" style={{borderRadius:"8px"}} alt="" />
+              </div>
+              <img src={this.state} alt="" />
+              <p id="body" className="article-body"></p>
+              <p
+                id="body-tamil"
+                className="article-body"
+                style={{ display: "none" }}
+              ></p>
             </div>
           </div>
         </>

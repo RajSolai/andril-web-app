@@ -1,6 +1,45 @@
+$grey: #999999;
+$grey-tint: #777777;
+
+@keyframes pulse {
+    0% {
+        background: $grey;
+    }
+    10%{
+        background: $grey-tint;
+    }
+    20% {
+        background: $grey;
+    }
+    30%{
+        background: $grey-tint;
+    }
+    40% {
+        background: $grey;
+    }
+    50%{
+        background: $grey-tint;
+    }
+    60% {
+        background: $grey;
+    }
+    70%{
+        background: $grey-tint;
+    }
+    80% {
+        background: $grey;
+    }
+    90{
+        background: $grey-tint;
+    }
+    100% {
+        background: $grey;
+    }
+}
+
 .card {
     text-decoration: none;
-    color: #000;
+    color: #2b2b2b;
     background: transparent;
     border: none;
     border-radius: 6px;
@@ -52,7 +91,8 @@
     }
 }
 .loading{
-    background: #eeeeee;
+    color: #ffffff;
+    animation: pulse 10s ease 300ms infinite;
     .dummy{
         height: 168.75px;
         width: 300px;

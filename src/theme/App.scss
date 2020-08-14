@@ -1,4 +1,6 @@
 @import "variables";
+@import "./animations/pulseloading";
+
 :root {
     font-size: 16px;
     padding: 0;
@@ -8,6 +10,10 @@
     -ms-text-size-adjust: none;
     -moz-text-size-adjust: none;
     text-size-adjust: none;
+    color: $primary-text;
+}
+.loader{
+    @include pulseloading();
 }
 .reader-top-bar {
     padding: 1rem;
@@ -22,6 +28,14 @@
     .ctrls {
         display: flex;
         flex-direction: row;
+        .tamilview {
+            .view-btn {
+                background: transparent;
+                border: none;
+                font-weight: bold;
+                color: #ff847c;
+            }
+        }
         .darkmode-cont {
             .darkmode-btn {
                 background: transparent;
@@ -37,6 +51,22 @@
 }
 .article-body {
     font-family: "Noto Serif", serif;
+    width: 90vw;
+    overflow: wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+.image-cont {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    img {
+        border-radius: 6px 6px 0 0;
+        padding: none;
+        margin: none;
+        box-shadow: 4px 4px 6px rgba(0,0,0,.1);
+    }
 }
 .center-layout {
     display: flex;
@@ -274,7 +304,7 @@ Link,
     padding: 0;
     position: fixed;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
     width: 100%;
     color: $primary-text;
@@ -378,9 +408,9 @@ Link,
         @media only screen and (max-width: 600px) {
             display: none;
         }
+        flex-direction: column;
+        justify-content: center;
         .left-aa {
-            flex: 40%;
-            height: 100vh;
             .left-aarea {
                 padding: 1rem;
                 margin-top: 5rem;
@@ -449,13 +479,15 @@ Link,
 .mobile-view {
     margin: 0;
     @media only screen and (min-width: 600px) {
-        display: none;
+        display: flex;
+        justify-content: center;
     }
     .form {
         //display: inline-flex;
         //flex-direction: column;
         margin-bottom: 0rem;
-        padding: 0rem; //align-content: center;
+        padding: 0rem;
+        //align-content: center;
         //justify-content: center;
         select {
             margin: 0.8em;

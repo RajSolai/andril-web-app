@@ -13,6 +13,7 @@ class AddArticle extends Component {
       imgbase64: null,
       posttitle: null,
       body: null,
+      bodytamil: null,
       desc: null,
       mustread: false,
       alert: false,
@@ -71,6 +72,7 @@ class AddArticle extends Component {
       posttitle: this.state.posttitle,
       postdesc: this.state.desc,
       body: this.state.body,
+      bodytamil: this.state.bodytamil,
       imagebin: this.state.imgbase64,
     };
     Axios.post(
@@ -138,11 +140,22 @@ class AddArticle extends Component {
                     placeholder="Short Description"
                     onChange={this.handleInputChange}
                   />
-                  <label htmlFor="body">Body of Post :</label>
+                  <label htmlFor="body">Body of Post English :</label>
                   <div className="textarea">
                     <textarea
                       name="body"
                       id="body"
+                      onChange={this.handleInputChange}
+                      cols="43"
+                      rows="30"
+                      placeholder="Type in the Article in MarkDown Format"
+                    ></textarea>
+                  </div>
+                  <label htmlFor="body">Body of Post Tamil :</label>
+                  <div className="textarea">
+                    <textarea
+                      name="bodytamil"
+                      id="bodytamil"
                       onChange={this.handleInputChange}
                       cols="43"
                       rows="30"
@@ -155,83 +168,6 @@ class AddArticle extends Component {
                     onChange={this.fileChangedHandler}
                   />
                   <button onClick={this.uploadhandler}>Post Article</button>
-                </div>
-              </div>
-              <div className="desk-view">
-                <div className="left-aa">
-                  <div className="left-aarea">
-                    <div className="form">
-                      <h3>Add Article</h3>
-                      <select
-                        name="category"
-                        id="category"
-                        onChange={this.handleInputChange}
-                        placeholder="Select The Category"
-                      >
-                        <option value="tamil">Tamil</option>
-                        <option value="medicine">Medicine</option>
-                        <option value="mystery">Mystery</option>
-                        <option value="business">Business</option>
-                        <option value="archaeology">Archaeology</option>
-                        <option value="environment">Environment</option>
-                        <option value="art">Art</option>
-                        <option value="imagination">Imagination</option>
-                        <option value="politics">Politics</option>
-                        <option value="tech">Technology</option>
-                        <option value="crime_stories">Crime Stories</option>
-                      </select>
-                      <input
-                        type="text"
-                        name="posttitle"
-                        id="posttitle"
-                        placeholder="Title of Post"
-                        onChange={this.handleInputChange}
-                      />
-                      <input
-                        type="text"
-                        name="desc"
-                        id="desc"
-                        placeholder="Short Description"
-                        onChange={this.handleInputChange}
-                      />
-                      <div className="togglewrapper">
-                        <div className="toggle">
-                          <input
-                            type="checkbox"
-                            id="mustread"
-                            name="mustread"
-                            defaultChecked={this.state.mustread}
-                            onChange={this.handleCheckBox}
-                            value="false"
-                          />
-                          <label>
-                            Mark as Must Read ?{" "}
-                            <span role="img" aria-label="emoji">
-                              🙄
-                            </span>{" "}
-                          </label>
-                        </div>
-                      </div>
-                      <input
-                        type="file"
-                        className="filepicker"
-                        onChange={this.fileChangedHandler}
-                      />
-                      <button onClick={this.uploadhandler}>Post Article</button>
-                    </div>
-                  </div>
-                </div>
-                <div className="right-aa">
-                  <div className="textarea">
-                    <textarea
-                      name="body"
-                      id=""
-                      onChange={this.handleInputChange}
-                      cols="70"
-                      rows="20"
-                      placeholder="Type in the Article in MarkDown Format"
-                    ></textarea>
-                  </div>
                 </div>
               </div>
             </div>

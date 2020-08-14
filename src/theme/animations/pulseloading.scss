@@ -1,0 +1,29 @@
+//pulseloading.scss
+$grey: #999999;
+$grey-tint: #777777;
+$grey-shade: #555555;
+
+@keyframes pulse {
+	0% {
+		background: $grey;
+	}
+	20% {
+		background: $grey-tint;
+	}
+	40% {
+		background: $grey-shade;
+	}
+	60% {
+		background: $grey;
+	}
+	80% {
+		background: $grey-tint;
+	}
+	100% {
+		background: $grey-shade;
+	}
+}
+
+@mixin pulseloading() {
+	animation: pulse ease-in-out 200ms infinite;
+}
