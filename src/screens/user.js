@@ -6,6 +6,10 @@ import userpageimg1 from "../assets/userpageimg1.svg";
 import userpageimg2 from "../assets/userpageimg2.svg";
 import Axios from "axios";
 import { Fade } from "react-reveal";
+import NavBar from "../components/navbar";
+import BottomBar from "../components/bottombar";
+
+
 
 export default class User extends Component {
 	constructor(props) {
@@ -35,6 +39,7 @@ export default class User extends Component {
 	render() {
 		return (
 			<>
+			<NavBar></NavBar>
 				<Fade>
 					<div className="app">
 						<div className="safearea">
@@ -70,6 +75,7 @@ export default class User extends Component {
 						</div>
 					</div>
 				</Fade>
+				<BottomBar></BottomBar>
 			</>
 		);
 	}

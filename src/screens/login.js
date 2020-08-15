@@ -30,7 +30,7 @@ class Login extends Component {
     this.login = this.login.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  _testlogin() {
+  loginAnon() {
     localStorage.setItem("uid", "sampleuidw83q498");
     window.location.reload();
   }
@@ -105,6 +105,7 @@ class Login extends Component {
                   placeholder="Enter your Password"
                 />
                 <button onClick={this.login}>Log in</button>
+                <button className="outline" onClick={this.loginAnon}>Use without Login</button>
                 <MessageLabel color="#e8505b" id="passerr">
                   Password incorrect
                 </MessageLabel>

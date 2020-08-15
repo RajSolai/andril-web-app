@@ -26,61 +26,18 @@ class App extends React.Component {
   render() {
     if (this.state.uid != null) {
       return (
-        <Router>
-          <div className="nav-bar" id="nav-bar">
-            <ul className="nav-list">
-              <li className="nav-itemp">
-                <Link to="/" className="link">
-                  <span className="brand">
-                    <img src={andrillogo} alt="logo" className="brand-logo" height="28" width="28"/>
-                    Andril<em>360</em>
-                  </span>
-                </Link>
-              </li>
-              <li className="nav-linkcoll">
-                <ul className="nav-list2">
-                  <Link to="/addarticle" className="link">
-                    <li className="nav-item">
-                      <span className="nav-link">
-                        <FaPen /> Write Article
-                      </span>
-                    </li>
-                  </Link>
-                  <Link to="/usr" className="link">
-                    <li className="nav-item">
-                      <span className="nav-link">
-                        <FaUserAlt /> My Account
-                      </span>
-                    </li>
-                  </Link>
-                  <Link to="/search" className="link">
-                    <li className="nav-item">
-                      <span className="nav-link">
-                        <FaNewspaper /> Articles
-                      </span>
-                    </li>
-                  </Link>
-                  <Link to="/about" className="link">
-                    <li className="nav-item">
-                      <span className="nav-link">
-                        <FaInfoCircle /> About
-                      </span>
-                    </li>
-                  </Link>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <Switch>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/addarticle" exact component={AddArticle}></Route>
-            <Route path="/search" exact component={Search}></Route>
-            <Route path="/article/:id" exact component={Article}></Route>
-            <Route path="/usr" exact component={User}></Route>
-            <Route path="/about" exact component={Info}></Route>
-          </Switch>
-          <BottomBar />
-        </Router>
+        <>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/addarticle" exact component={AddArticle}></Route>
+              <Route path="/search" exact component={Search}></Route>
+              <Route path="/usr" exact component={User}></Route>
+              <Route path="/about" exact component={Info}></Route>
+              <Route path="/article/:id" exact component={Article}></Route>
+            </Switch>
+          </Router>
+        </>
       );
     } else {
       return (
@@ -89,6 +46,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Login}></Route>
               <Route path="/register" exact component={Register}></Route>
+              <Route path="/article/:id" exact component={Article}></Route>
             </Switch>
           </div>
         </Router>

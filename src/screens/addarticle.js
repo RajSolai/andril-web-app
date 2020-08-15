@@ -3,6 +3,7 @@ import { Fade } from "react-reveal";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import womansittinglaptop from "../assets/womansittinglaptop.svg";
+import NavBar from "../components/navbar";
 
 class AddArticle extends Component {
   constructor(props) {
@@ -43,19 +44,32 @@ class AddArticle extends Component {
   handleCheckBox() {
     this.setState({ mustread: !this.state.mustread });
   }
-  changebottombarPos() {
-    document.getElementById("bottombar").style.display = "none";
-  }
-  changebottombarTogglevisible() {
-    if (document.documentElement.clientWidth <= 600) {
-      document.getElementById("bottombar").style.display = "flex";
+  checkUpload() {
+    if (localStorage.getItem("uid") === "sampleuidw83q498") {
+      Swal.fire({
+        confirmButtonColor: "#ff847c",
+        title: "Can't Upload",
+        text: "Please Login with email for Uploading",
+        icon: "Error",
+        confirmButtonText: "Okay",
+      });
+    } else if (
+      this.state.imgbase64 != null &&
+      this.state.posttitle != null &&
+      this.state.desc != null &&
+      this.state.body != null &&
+      this.state.bodytamil != null
+    ) {
+      this.uploadhandler();
+    } else {
+      Swal.fire({
+        title: "Can't Upload",
+        text: "Please Fillout all the fields before uploading",
+        icon: "Error",
+        confirmButtonText: "Okay",
+        confirmButtonColor: "#ff847c",
+      });
     }
-  }
-  componentDidMount() {
-    this.changebottombarPos();
-  }
-  componentWillUnmount() {
-    this.changebottombarTogglevisible();
   }
   uploadhandler() {
     Swal.fire({
@@ -88,6 +102,7 @@ class AddArticle extends Component {
             text: "Do you want to continue",
             icon: "success",
             confirmButtonText: "Okay",
+            confirmButtonColor: "#ff847c",
           });
         } else {
           console.log(res);
@@ -100,6 +115,7 @@ class AddArticle extends Component {
   render() {
     return (
       <>
+        <NavBar></NavBar>
         <Fade>
           <div className="app">
             <div className="safearea articleform">
@@ -167,7 +183,11 @@ class AddArticle extends Component {
                     className="filepicker"
                     onChange={this.fileChangedHandler}
                   />
-                  <button onClick={this.uploadhandler}>Post Article</button>
+                  <span style={{ textAlign: "center" }}>
+                    (Maximum Image Size is 5MB)
+                  </span>
+                  <p></p>
+                  <button onClick={this.checkUpload}>Post Article</button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Card from "../components/card";
+import NavBar from "../components/navbar";
+import BottomBar from "../components/bottombar";
 import ListItem from "../components/listitem";
 import "../theme/App.scss";
 import styled from "styled-components";
@@ -151,6 +153,7 @@ class Home extends Component {
   render() {
     return (
       <>
+        <NavBar></NavBar>
         <div className="app">
           <div className="safe-area homearea">
             <SearchContainer>
@@ -247,6 +250,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <BottomBar />
       </>
     );
   }

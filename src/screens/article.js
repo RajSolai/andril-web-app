@@ -14,8 +14,6 @@ export default class Article extends Component {
     };
   }
   componentWillMount() {
-    document.getElementById("bottombar").style.display = "none";
-    document.getElementById("nav-bar").style.display = "none";
     document.body.style.background = "#ffffff";
     let articleid = this.props.match.params.id;
     //TODO: search for article data in DB and save in state
@@ -45,14 +43,7 @@ export default class Article extends Component {
       }
     });
   }
-  changebottombarTogglevisible() {
-    if (document.documentElement.clientWidth <= 600) {
-      document.getElementById("bottombar").style.display = "flex";
-    }
-    document.getElementById("nav-bar").style.display = "block";
-  }
   componentWillUnmount() {
-    this.changebottombarTogglevisible();
     this.resetTheme();
   }
   themeToggle(reset) {
@@ -86,6 +77,7 @@ export default class Article extends Component {
         <div className="app">
           <div className="safearea center-layout">
             <img src={loadingandril} alt="Loading" />
+            <div id="body"></div>
             <div id="body-tamil"></div>
           </div>
         </div>
@@ -121,7 +113,13 @@ export default class Article extends Component {
           <div className=" nomargin app">
             <div className="safearea">
               <div className="image-cont">
-                <img src={this.state.data.imagebin} height="300px" width="300px" style={{borderRadius:"8px"}} alt="" />
+                <img
+                  src={this.state.data.imagebin}
+                  height="300px"
+                  width="300px"
+                  style={{ borderRadius: "8px" }}
+                  alt=""
+                />
               </div>
               <img src={this.state} alt="" />
               <p id="body" className="article-body"></p>

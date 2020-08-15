@@ -12,7 +12,33 @@
     text-size-adjust: none;
     color: $primary-text;
 }
-.loader{
+.alert-btn {
+    background-color: $secondary;
+    color: $primary-text-invert;
+    border-radius: 6px;
+    border: none;
+    padding: 0.5rem;
+    margin: 1rem;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+}
+.ccholder {
+    padding: 0.5em;
+    border-radius: 6px;
+    box-shadow: 2px 2px 8px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 33em;
+    width: 85vw;
+}
+.outline {
+    background: transparent;
+    border: $secondary;
+}
+.copyright {
+    text-align: center;
+}
+.loader {
     @include pulseloading();
 }
 .reader-top-bar {
@@ -65,7 +91,7 @@
         border-radius: 6px 6px 0 0;
         padding: none;
         margin: none;
-        box-shadow: 4px 4px 6px rgba(0,0,0,.1);
+        box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
     }
 }
 .center-layout {
@@ -153,6 +179,11 @@ Link,
             outline: none;
         }
     }
+    .outline {
+        background: transparent;
+        color: $secondary;
+        border: solid 1px $secondary;
+    }
     input {
         border: none;
         padding: 0.5rem;
@@ -198,7 +229,7 @@ Link,
     }
     Link,
     .link {
-        color: $secondary;
+        color: #ffffff;
         text-decoration: none;
         outline: none;
         &:active {
@@ -242,10 +273,10 @@ Link,
     }
     .mobileregis {
         display: block;
-        background: transparent;
-        color: $secondary;
+        background: $secondary;
+        //color: #ffffff;
         border-radius: 6px;
-        border: solid 1px $secondary;
+        border: none;
         padding: 0.5rem;
         font-size: 1rem;
         font-family: "Inter", sans-serif;
