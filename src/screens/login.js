@@ -110,7 +110,7 @@ class Login extends Component {
                   Password incorrect
                 </MessageLabel>
                 <MessageLabel color="#e8505b" id="nousr">
-                  No User Found for given Email
+                  No User Found for given Email ID
                 </MessageLabel>
               </div>
               <div className="regislink mobileregis">
