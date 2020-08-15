@@ -1,5 +1,4 @@
 @import "variables";
-@import "./animations/pulseloading";
 
 :root {
     font-size: 16px;
@@ -37,9 +36,6 @@
 }
 .copyright {
     text-align: center;
-}
-.loader {
-    @include pulseloading();
 }
 .reader-top-bar {
     padding: 1rem;

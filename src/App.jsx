@@ -1,17 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./theme/App.scss";
 import AddArticle from "./screens/addarticle";
 import Home from "./screens/home";
 import Info from "./screens/info";
 import Login from "./screens/login";
 import Search from "./screens/search";
-import BottomBar from "./components/bottombar";
 import Register from "./screens/register";
 import Article from "./screens/article";
-import andrillogo from "./assets/andrillogo.svg";
 import User from "./screens/user";
-import { FaPen, FaUserAlt, FaNewspaper, FaInfoCircle } from "react-icons/fa";
 
 class App extends React.Component {
   constructor(props) {
