@@ -96,7 +96,7 @@ class Login extends Component {
                   placeholder="Enter your Email ID"
                   aria-label="Email Address"
                 />
-                <label htmlFor="email">Password :</label>
+                <label htmlFor="password">Password :</label>
                 <input
                   type="password"
                   onChange={this.handleInputChange}
