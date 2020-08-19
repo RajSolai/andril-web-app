@@ -62,14 +62,15 @@ const FlexBox = styled.div`
 `;
 
 class Home extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
+      searchres: [],
       recent: [],
       mustread: [],
       mostpop: [],
       searchKey: null,
-      searchres: null,
       mustreadloading: true,
       mustpoploading: true,
       searchresloading: true,
@@ -77,6 +78,7 @@ class Home extends Component {
     this.handleSearch = this.handleSearch.bind(this);
   }
   componentDidMount() {
+    this._isMounted = true;
     console.log("component loaded");
     this.getMustRead();
     this.getRecent();
@@ -97,17 +99,19 @@ class Home extends Component {
       document.getElementById("bottombar").style.display = "flex";
     }
   }
-  async searchRecords(key) {
+  searchRecords(key) {
     this.setState({ searchresloading: true });
     // search for the item based on article name
     Axios.get(
       "https://blooming-shelf-29088.herokuapp.com/api/posts/search/" + key
     )
       .then((res) => {
-        this.setState({
-          searchres: res.data.postdata,
-          searchresloading: false,
-        });
+        if (res.data.postdata) {
+          this.setState({
+            searchres: res.data.postdata,
+            searchresloading: false,
+          });
+        }
         console.dir(res);
       })
       .catch((err) => {

@@ -29,17 +29,19 @@ export default class Article extends Component {
             ? "- no data found"
             : res.data.postdata.body
         );
-        /*
+
         document.getElementById("body-tamil").innerHTML = marked(
           res.data.postdata.bodytamil == null
             ? "- no data found"
             : res.data.postdata.bodytamil
         );
-        */
+
+        /*
         document.getElementById("body-tamil").innerHTML =
           res.data.postdata.bodytamil == null
             ? "- no data found"
             : res.data.postdata.bodytamil;
+         */
       }
     });
   }
