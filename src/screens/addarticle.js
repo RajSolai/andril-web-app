@@ -175,7 +175,7 @@ class AddArticle extends Component {
                     />
                     <label for="mustread"><strong>Mark as Mustread??</strong></label>
                   </span>
-                  <br/><br/>
+                  <br/>
                   <label htmlFor="body">Body of Post English :</label>
                   <div className="textarea">
                     <textarea
