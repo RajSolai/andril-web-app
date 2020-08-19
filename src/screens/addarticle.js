@@ -4,6 +4,7 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import womansittinglaptop from "../assets/womansittinglaptop.svg";
 import NavBar from "../components/navbar";
+import disableBrowserBackButton from "disable-browser-back-navigation";
 
 class AddArticle extends Component {
   constructor(props) {
@@ -44,6 +45,12 @@ class AddArticle extends Component {
   }
   handleCheckBox() {
     this.setState({ mustread: !this.state.mustread });
+  }
+  confirmBack() {
+    disableBrowserBackButton();
+  }
+  componentDidMount() {
+    this.confirmBack();
   }
   checkUpload() {
     if (localStorage.getItem("uid") === "sampleuidw83q498") {
@@ -90,6 +97,7 @@ class AddArticle extends Component {
       bodytamil: this.state.bodytamil,
       imagebin: this.state.imgbase64,
     };
+    console.log(this.state.mustread);
     Axios.post(
       "https://blooming-shelf-29088.herokuapp.com/api/posts/" +
         this.state.category,
@@ -157,6 +165,17 @@ class AddArticle extends Component {
                     placeholder="Short Description"
                     onChange={this.handleInputChange}
                   />
+                  <span>
+                    <input
+                      type="checkbox"
+                      id="mustread"
+                      name="mustread"
+                      value={this.state.mustread}
+                      onChange={this.handleCheckBox}
+                    />
+                    <label for="mustread"><strong>Mark as Mustread??</strong></label>
+                  </span>
+                  <br/><br/>
                   <label htmlFor="body">Body of Post English :</label>
                   <div className="textarea">
                     <textarea
