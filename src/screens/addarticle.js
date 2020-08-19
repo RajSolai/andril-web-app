@@ -23,6 +23,7 @@ class AddArticle extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.uploadhandler = this.uploadhandler.bind(this);
     this.handleCheckBox = this.handleCheckBox.bind(this);
+    this.checkUpload = this.checkUpload.bind(this);
   }
   fileChangedHandler(event) {
     const imgs = event.target.files[0];
