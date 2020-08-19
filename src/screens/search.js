@@ -14,7 +14,7 @@ const defaultImage =
 	"https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
 const CategoryButton = styled.button`
-	background: #ff847c;
+	background: #3282b8;
 	border-radius: 8px;
 	border: none;
 	color: #ffffff;
@@ -76,7 +76,7 @@ export default class Search extends Component {
 									onClick={this.handleCategoryChange}
 									id="tamil"
 								>
-									Tamil
+									Tamil History
 								</CategoryButton>
 								<CategoryButton
 									primary

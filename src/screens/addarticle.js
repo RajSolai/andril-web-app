@@ -128,7 +128,7 @@ class AddArticle extends Component {
                     onChange={this.handleInputChange}
                     placeholder="Select The Category"
                   >
-                    <option value="tamil">Tamil</option>
+                    <option value="tamil">Tamil History</option>
                     <option value="medicine">Medicine</option>
                     <option value="mystery">Mystery</option>
                     <option value="business">Business</option>
