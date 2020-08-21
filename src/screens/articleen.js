@@ -5,7 +5,7 @@ import "../theme/App.scss";
 import loadingandril from "../assets/loadingandril.svg";
 import marked from "marked";
 
-export default class ArticleTamil extends Component {
+export default class ArticleEn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,6 @@ export default class ArticleTamil extends Component {
     this.setState({ id: this.props.match.params.id });
     document.body.style.background = "#ffffff";
     let articleid = this.props.match.params.id;
-    //TODO: search for article data in DB and save in state
     Axios.get(
       "https://blooming-shelf-29088.herokuapp.com/api/posts/search/id/" +
         articleid
@@ -26,19 +25,11 @@ export default class ArticleTamil extends Component {
       console.log(res);
       if (res.data.code === "PSTDTA") {
         this.setState({ data: res.data.postdata, isloading: false });
-
-        document.getElementById("body-tamil").innerHTML = marked(
-          res.data.postdata.bodytamil == null
+        document.getElementById("body").innerHTML = marked(
+          res.data.postdata.body == null
             ? "- no data found"
-            : res.data.postdata.bodytamil
+            : res.data.postdata.body
         );
-
-        /*
-        document.getElementById("body-tamil").innerHTML =
-          res.data.postdata.bodytamil == null
-            ? "- no data found"
-            : res.data.postdata.bodytamil;
-         */
       }
     });
   }
@@ -59,6 +50,7 @@ export default class ArticleTamil extends Component {
     document.body.style.backgroundColor = "rgb(255, 255, 255)";
     document.body.style.color = "rgb(0, 0, 0)";
   }
+  changeView() {}
   render() {
     if (this.state.isloading) {
       return (
@@ -79,10 +71,8 @@ export default class ArticleTamil extends Component {
             </h3>
             <div className="ctrls">
               <div className="tamilview">
-                <a
-                  href={"../../article/en/"+this.state.id}
-                >
-                  View in <br /> English
+                <a href={"../../article/ta/" + this.state.id}>
+                  View in <br /> Tamil
                 </a>
               </div>
               <div className="darkmode-cont">
@@ -108,8 +98,7 @@ export default class ArticleTamil extends Component {
                 />
               </div>
               <img src={this.state} alt="" />
-              <p id="" className="article-body"></p>
-              <p id="body-tamil" className="article-body"></p>
+              <p id="body" className="article-body"></p>
             </div>
           </div>
         </>
