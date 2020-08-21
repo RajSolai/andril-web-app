@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9472edd8.chunk.css",
+    "main.js": "/static/js/main.a3d27012.chunk.js",
+    "main.js.map": "/static/js/main.a3d27012.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c88050f1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c88050f1.js.map",
+    "static/js/2.2bdea00b.chunk.js": "/static/js/2.2bdea00b.chunk.js",
+    "static/js/2.2bdea00b.chunk.js.map": "/static/js/2.2bdea00b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cba3a00d7d6c2ae0c8869b71c435932c.js": "/precache-manifest.cba3a00d7d6c2ae0c8869b71c435932c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.9472edd8.chunk.css.map": "/static/css/main.9472edd8.chunk.css.map",
+    "static/js/2.2bdea00b.chunk.js.LICENSE.txt": "/static/js/2.2bdea00b.chunk.js.LICENSE.txt",
+    "static/media/Nodata.svg": "/static/media/Nodata.b48fb621.svg",
+    "static/media/andrillogo.svg": "/static/media/andrillogo.33759894.svg",
+    "static/media/App.scss": "/static/media/hand.5ef46399.jpg",
+    "static/media/andrillogoop.svg": "/static/media/andrillogoop.47bb86d2.svg",
+    "static/media/loadingandril.svg": "/static/media/loadingandril.1b14c1ae.svg",
+    "static/media/userpageimg1.svg": "/static/media/userpageimg1.f16782f0.svg",
+    "static/media/userpageimg2.svg": "/static/media/userpageimg2.1fecd0f6.svg",
+    "static/media/womansittinglaptop.svg": "/static/media/womansittinglaptop.f8ca2dfb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c88050f1.js",
+    "static/js/2.2bdea00b.chunk.js",
+    "static/css/main.9472edd8.chunk.css",
+    "static/js/main.a3d27012.chunk.js"
+  ]
+}
