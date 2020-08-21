@@ -65,7 +65,6 @@ export default class ArticleTamil extends Component {
         <div className="app">
           <div className="safearea center-layout">
             <img src={loadingandril} alt="Loading" />
-            <div id="body"></div>
             <div id="body-tamil"></div>
           </div>
         </div>
@@ -75,13 +74,13 @@ export default class ArticleTamil extends Component {
         <>
           <div className="reader-top-bar">
             <h3 className="reader-top-bar-title">
-              {this.state.data.posttitle}
+              {this.state.data.posttitletamil === undefined
+                ? this.state.data.posttitle
+                : this.state.data.posttitletamil}
             </h3>
             <div className="ctrls">
               <div className="tamilview">
-                <a
-                  href={"../../article/en/"+this.state.id}
-                >
+                <a href={"../../article/en/" + this.state.id}>
                   View in <br /> English
                 </a>
               </div>
@@ -108,7 +107,6 @@ export default class ArticleTamil extends Component {
                 />
               </div>
               <img src={this.state} alt="" />
-              <p id="" className="article-body"></p>
               <p id="body-tamil" className="article-body"></p>
             </div>
           </div>

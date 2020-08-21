@@ -21,7 +21,7 @@ class Card extends Component {
     } else {
       return (
         <Fade>
-          <Link className="card" to={"/article/" + this.props.id}>
+          <Link className="card" to={"/article/en/" + this.props.id}>
             <img src={this.props.image} className="card-image" alt={this.props.title} />
             <div className="card-area">
               <p className="card-title">{this.props.title}</p>

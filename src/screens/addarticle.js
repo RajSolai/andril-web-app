@@ -14,6 +14,8 @@ class AddArticle extends Component {
       category: "Tamil",
       imgbase64: null,
       posttitle: null,
+      posttitletamil: null,
+      desctamil: null,
       body: null,
       bodytamil: null,
       desc: null,
@@ -93,11 +95,13 @@ class AddArticle extends Component {
       mustread: this.state.mustread === true ? "true" : "false",
       posttitle: this.state.posttitle,
       postdesc: this.state.desc,
+      posttitletamil: this.state.posttitletamil,
+      postdesctamil: this.state.desctamil,
       body: this.state.body,
       bodytamil: this.state.bodytamil,
       imagebin: this.state.imgbase64,
     };
-    console.log(this.state.mustread);
+    console.log(this.state.mustread+this.state.posttitletamil+this.state.desctamil);
     Axios.post(
       "https://blooming-shelf-29088.herokuapp.com/api/posts/" +
         this.state.category,
@@ -162,6 +166,22 @@ class AddArticle extends Component {
                     type="text"
                     name="desc"
                     id="desc"
+                    placeholder="Short Description"
+                    onChange={this.handleInputChange}
+                  />
+                  <label htmlFor="posttitletamil">Tamil Title :</label>
+                  <input
+                    type="text"
+                    name="posttitletamil"
+                    id="posttitletamil"
+                    placeholder="Title of Post"
+                    onChange={this.handleInputChange}
+                  />
+                  <label htmlFor="desctamil">Tamil Description :</label>
+                  <input
+                    type="text"
+                    name="desctamil"
+                    id="desctamil"
                     placeholder="Short Description"
                     onChange={this.handleInputChange}
                   />
