@@ -40,20 +40,20 @@ export default class ArticleEn extends Component {
   themeToggle(reset) {
     console.log(document.body.style.backgroundColor);
     if (document.body.style.backgroundColor === "rgb(255, 255, 255)") {
-      document.body.style.backgroundColor = "rgb(0, 0, 0)";
+      document.body.style.backgroundColor = "rgb(51, 51, 51)";
       document.body.style.color = "rgb(255, 255, 255)";
       document.getElementById("drkbtn").innerHTML =
-        "<i class='fas fa-sun'></i>";
+        "<i class='fas fa-sun fa-lg sun'></i>";
     } else {
       document.body.style.backgroundColor = "rgb(255, 255, 255)";
-      document.body.style.color = "rgb(0, 0, 0)";
+      document.body.style.color = "rgb(51, 51, 51)";
       document.getElementById("drkbtn").innerHTML =
-        "<i class='fas fa-moon'></i>";
+        "<i class='fas fa-moon fa-lg moon'></i>";
     }
   }
   resetTheme() {
     document.body.style.backgroundColor = "rgb(255, 255, 255)";
-    document.body.style.color = "rgb(0, 0, 0)";
+    document.body.style.color = "rgb(51, 51, 51) ";
   }
   changeView() {}
   render() {
@@ -88,7 +88,7 @@ export default class ArticleEn extends Component {
                   id="drkbtn"
                   onClick={this.themeToggle}
                 >
-                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-moon fa-lg moon"></i>
                 </button>
               </div>
             </div>
