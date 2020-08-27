@@ -1,5 +1,6 @@
 //article.js
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import "../theme/App.scss";
 import loadingandril from "../assets/loadingandril.svg";
@@ -32,13 +33,6 @@ export default class ArticleTamil extends Component {
             ? "- no data found"
             : res.data.postdata.bodytamil
         );
-
-        /*
-        document.getElementById("body-tamil").innerHTML =
-          res.data.postdata.bodytamil == null
-            ? "- no data found"
-            : res.data.postdata.bodytamil;
-         */
       }
     });
   }
@@ -50,9 +44,13 @@ export default class ArticleTamil extends Component {
     if (document.body.style.backgroundColor === "rgb(255, 255, 255)") {
       document.body.style.backgroundColor = "rgb(0, 0, 0)";
       document.body.style.color = "rgb(255, 255, 255)";
+      document.getElementById("drkbtn").innerHTML =
+        "<i class='fas fa-sun'></i>";
     } else {
       document.body.style.backgroundColor = "rgb(255, 255, 255)";
       document.body.style.color = "rgb(0, 0, 0)";
+      document.getElementById("drkbtn").innerHTML =
+        "<i class='fas fa-moon'></i>";
     }
   }
   resetTheme() {
@@ -80,23 +78,25 @@ export default class ArticleTamil extends Component {
             </h3>
             <div className="ctrls">
               <div className="tamilview">
-                <a href={"../../article/en/" + this.state.id}>
-                  View in <br /> English
-                </a>
+                <Link to={"../../article/en/" + this.state.id}>
+                  <button>
+                    English <br/> View
+                  </button>
+                </Link>
               </div>
               <div className="darkmode-cont">
                 <button
-                  className="darkmode-btn"
+                  className="darkmodebtn"
                   id="drkbtn"
                   onClick={this.themeToggle}
                 >
-                  Switch <br /> DarkMode
+                  <i class="fas fa-moon"></i>
                 </button>
               </div>
             </div>
           </div>
-          <div className=" nomargin app">
-            <div className="safearea">
+          <div className="app">
+            <div className="reader safearea">
               <div className="image-cont">
                 <img
                   src={this.state.data.imagebin}

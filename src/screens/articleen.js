@@ -1,5 +1,6 @@
 //article.js
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import "../theme/App.scss";
 import loadingandril from "../assets/loadingandril.svg";
@@ -41,9 +42,13 @@ export default class ArticleEn extends Component {
     if (document.body.style.backgroundColor === "rgb(255, 255, 255)") {
       document.body.style.backgroundColor = "rgb(0, 0, 0)";
       document.body.style.color = "rgb(255, 255, 255)";
+      document.getElementById("drkbtn").innerHTML =
+        "<i class='fas fa-sun'></i>";
     } else {
       document.body.style.backgroundColor = "rgb(255, 255, 255)";
       document.body.style.color = "rgb(0, 0, 0)";
+      document.getElementById("drkbtn").innerHTML =
+        "<i class='fas fa-moon'></i>";
     }
   }
   resetTheme() {
@@ -71,23 +76,25 @@ export default class ArticleEn extends Component {
             </h3>
             <div className="ctrls">
               <div className="tamilview">
-                <a href={"../../article/ta/" + this.state.id}>
-                  View in <br /> Tamil
-                </a>
+                <Link to={"../../article/ta/" + this.state.id}>
+                  <button>
+                    Tamil <br /> View
+                  </button>
+                </Link>
               </div>
               <div className="darkmode-cont">
                 <button
-                  className="darkmode-btn"
+                  className="darkmodebtn"
                   id="drkbtn"
                   onClick={this.themeToggle}
                 >
-                  Switch <br /> DarkMode
+                  <i class="fas fa-moon"></i>
                 </button>
               </div>
             </div>
           </div>
-          <div className=" nomargin app">
-            <div className="safearea">
+          <div className="app">
+            <div className="reader safearea">
               <div className="image-cont">
                 <img
                   src={this.state.data.imagebin}

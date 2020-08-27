@@ -13,16 +13,6 @@ import NavBar from "../components/navbar";
 const defaultImage =
 	"https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
-const CategoryButton = styled.button`
-	background: #3282b8;
-	border-radius: 8px;
-	border: none;
-	color: #ffffff;
-	font-size: 0.9rem;
-	font-weight: 500;
-	margin-right: 0.5em;
-	padding: 1em;
-`;
 const CardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -35,6 +25,7 @@ export default class Search extends Component {
 		this.state = {
 			data: null,
 			isloading: true,
+			categorynow: "tamil",
 		};
 		this.handleCategoryChange = this.handleCategoryChange.bind(this);
 	}
@@ -44,7 +35,12 @@ export default class Search extends Component {
 	handleCategoryChange(event) {
 		this.setState({
 			isloading: true,
+			categorynow: event.target.id,
 		});
+		console.log("categorynow is" + this.state.categorynow);
+		document.getElementById(this.state.categorynow).className = "category-btn";
+		document.getElementById(event.target.id).className =
+			"category-btn active-btn";
 		console.log(event.target.id);
 		this.getData(event.target.id);
 	}
@@ -71,83 +67,94 @@ export default class Search extends Component {
 					<div className="app">
 						<div className="safe-area search-layout">
 							<div className="search-categories">
-								<CategoryButton
+								<button
+									className="category-btn active-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="tamil"
 								>
 									Tamil History
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="medicine"
 								>
 									Medicine
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="mystery"
 								>
 									Mystery
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="business"
 								>
 									Business
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="archaeology"
 								>
 									Archaeology
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="environment"
 								>
 									Environment
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="art"
 								>
 									Art
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="imagination"
 								>
 									Imagination
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="politics"
 								>
 									Politics
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="tech"
 								>
 									Tech
-								</CategoryButton>
-								<CategoryButton
+								</button>
+								<button
+									className="category-btn"
 									primary
 									onClick={this.handleCategoryChange}
 									id="crime_stories"
 								>
 									Crime Stories
-								</CategoryButton>
+								</button>
 							</div>
 							<CardContainer>
 								{this.state.isloading === true ? (

@@ -11,6 +11,19 @@
     text-size-adjust: none;
     color: $primary-text;
 }
+.category-btn {
+    background: $secondary;
+    border-radius: 8px;
+    border: none;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 0.5em;
+    padding: 1em;
+}
+.active-btn {
+    background: darken($secondary, 20);
+}
 .alert-btn {
     background-color: $secondary;
     color: $primary-text-invert;
@@ -37,7 +50,16 @@
 .copyright {
     text-align: center;
 }
+.reader{
+    margin-top: 7rem;
+}
 .reader-top-bar {
+    background: rgba(35, 43, 43, .5);
+    backdrop-filter: blur(8px);
+    color: #fafafa;
+    position: fixed;
+    top: 0;
+    width: 97vw;
     padding: 1rem;
     margin: 0;
     display: flex;
@@ -51,22 +73,28 @@
         display: flex;
         flex-direction: row;
         .tamilview {
-            a { 
-                font-size: 12px;
-                margin-right: 1em;
-                font-style: normal;
-                background: transparent;
-                border: none;
-                font-weight: bold;
-                color: #3282b8;
+            button {
+                background: $secondary;
+                color: #ffffff;
+                border: 2px solid $secondary;
+                border-radius: 8px;
+                padding: 0.7em;
+                margin: 0.2em;
             }
         }
         .darkmode-cont {
-            .darkmode-btn {
+            .darkmodebtn {
                 background: transparent;
-                border: none;
-                font-weight: bold;
-                color: #3282b8;
+                color: #ffffff;
+                border: 2px solid $secondary;
+                border-radius: 8px;
+                padding: 1.4em;
+                margin-left: 0.5em;
+                margin-right: .7em;
+                outline: none;
+                &:active,&:focus{
+                    outline: none;
+                }
             }
         }
     }

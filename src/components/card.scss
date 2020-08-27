@@ -63,6 +63,9 @@ $grey-tint: #777777;
             font-size: 1.1rem;
         }
         .card-text {
+            width: 10px;
+            height: 15px;
+            text-overflow: hidden;
             overflow: hidden;
         }
     }
