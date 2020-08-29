@@ -37,11 +37,7 @@ class App extends React.Component {
                 exact
                 component={ArticleTamil}
               ></Route>
-              <Route
-                path="/article/en/:id"
-                exact
-                component={ArticleEn}
-              ></Route>
+              <Route path="/article/en/:id" exact component={ArticleEn}></Route>
             </Switch>
           </Router>
         </>
@@ -58,11 +54,7 @@ class App extends React.Component {
                 exact
                 component={ArticleTamil}
               ></Route>
-              <Route
-                path="/article/en/:id"
-                exact
-                component={ArticleEn}
-              ></Route>
+              <Route path="/article/en/:id" exact component={ArticleEn}></Route>
             </Switch>
           </div>
         </Router>

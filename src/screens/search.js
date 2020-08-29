@@ -37,8 +37,10 @@ export default class Search extends Component {
 			isloading: true,
 			categorynow: event.target.id,
 		});
+		window.navigator.vibrate(20);
 		console.log("categorynow is" + this.state.categorynow);
-		document.getElementById(this.state.categorynow).className = "category-btn";
+		document.getElementById(this.state.categorynow).className =
+			"category-btn";
 		document.getElementById(event.target.id).className =
 			"category-btn active-btn";
 		console.log(event.target.id);
@@ -66,6 +68,15 @@ export default class Search extends Component {
 				<Fade>
 					<div className="app">
 						<div className="safe-area search-layout">
+							<div className="flexslide">
+								<span>
+									<i class="fas fa-angle-double-left fa-lg colored" />
+								</span>
+								<span>
+									<i class="fas fa-angle-double-right fa-lg colored" />
+								</span>
+							</div>
+
 							<div className="search-categories">
 								<button
 									className="category-btn active-btn"

@@ -1,7 +1,7 @@
 //bottombar.jsx
 import React, { Component } from "react";
 import "../theme/App.scss";
-import { FaPen, FaUserAlt, FaInfoCircle, FaNewspaper } from "react-icons/fa";
+import { FaPen, FaUserAlt, FaInfoCircle, FaNewspaper, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./bottombar.scss";
 
@@ -17,6 +17,11 @@ class BottomBar extends Component {
         <Link className="link" to="addarticle">
           <button className="round-btn">
             <FaPen color="#ffffff" />
+          </button>
+        </Link>
+        <Link className="link" to="/">
+          <button className="round-btn">
+            <FaHome color="#ffffff" />
           </button>
         </Link>
         <Link className="link" to="search">

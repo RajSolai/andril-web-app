@@ -15,12 +15,13 @@ const defaultImage =
   "https://i.pinimg.com/originals/7f/ff/42/7fff4212cff021c7dc579d837347f92c.jpg";
 
 const SearchBox = styled.input`
-  background: #f5f5f5;
+  background: #D3D3D3;
   display: inline-block;
   border: none;
   border-radius: 8px;
   width: 80vw;
   height: 40px;
+  outline:none;
   padding: 0.25em 1em;
   margin: 0.5em;
   ::placeholder,
@@ -35,7 +36,7 @@ const SearchContainer = styled.div`
   flex-direction: row;
   align-content: center;
   justify-content: center;
-  background: #f5f5f5;
+  background: #D3D3D3;
   align-items: center;
   padding-left: 1em;
   border-radius: 20px;

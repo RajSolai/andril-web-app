@@ -5,31 +5,31 @@ $grey-tint: #777777;
     0% {
         background: $grey;
     }
-    10%{
+    10% {
         background: $grey-tint;
     }
     20% {
         background: $grey;
     }
-    30%{
+    30% {
         background: $grey-tint;
     }
     40% {
         background: $grey;
     }
-    50%{
+    50% {
         background: $grey-tint;
     }
     60% {
         background: $grey;
     }
-    70%{
+    70% {
         background: $grey-tint;
     }
     80% {
         background: $grey;
     }
-    90{
+    90 {
         background: $grey-tint;
     }
     100% {
@@ -49,7 +49,7 @@ $grey-tint: #777777;
     margin: 1rem;
     padding: 0;
     transition: ease-in-out 300ms;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, .1);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     .card-image {
         border-radius: 6px 6px 0 0;
         padding: none;
@@ -58,7 +58,7 @@ $grey-tint: #777777;
         height: 168.75px;
     }
     .card-area {
-        padding: .5rem;
+        padding: 0.5rem;
         .card-title {
             font-size: 1.1rem;
         }
@@ -71,19 +71,19 @@ $grey-tint: #777777;
     }
     &:hover {
         position: relative;
-        margin: .8rem;
-        box-shadow: 1px 1px 10px rgba(35, 43, 43, .5);
+        margin: 0.8rem;
+        box-shadow: 1px 1px 10px rgba(35, 43, 43, 0.5);
         .card-image {
             height: 200;
             width: 300;
         }
     }
     @media only screen and (max-width: 600px) {
-        margin: .5rem;
+        margin: 0.5rem;
         flex-wrap: wrap;
         justify-content: space-between;
-        flex-shrink:0;
-        .card-image{
+        flex-shrink: 0;
+        .card-image {
             width: 280px;
         }
         .card-area {
@@ -93,12 +93,19 @@ $grey-tint: #777777;
         }
     }
 }
-.loading{
+.loading {
     color: #ffffff;
     animation: pulse 10s ease 300ms infinite;
-    .dummy{
+    .dummy {
         height: 168.75px;
         width: 300px;
         border: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .card {
+        color: #fafafa;
+        background-color: darken(rgb(51,51,51),5%);
     }
 }
