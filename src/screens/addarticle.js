@@ -166,7 +166,7 @@ class AddArticle extends Component {
                     type="text"
                     name="desc"
                     id="desc"
-                    placeholder="Short Description"
+                    placeholder="One line Description"
                     onChange={this.handleInputChange}
                   />
                   <label htmlFor="posttitletamil">Tamil Title :</label>
